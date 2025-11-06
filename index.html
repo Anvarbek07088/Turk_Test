@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turkcha Lug'at Testi - A1 Unit 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <h1 class="logo">📚 Türkçe Öğren</h1>
+          <div class="stats">
+            <div class="stat-item">
+              <span class="stat-icon">🎯</span>
+              <span id="score">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">📝</span>
+              <span id="progress">0/0</span>
+            </div>
+            <div class="stat-item timer-display">
+              <span class="stat-icon">⏱️</span>
+              <span id="timer-display">30s</span>
+            </div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div id="global-progress" class="progress-fill"></div>
+        </div>
+      </header>
+
+      <!-- Start Screen -->
+      <div id="start-screen" class="screen active">
+        <div class="start-container">
+          <div class="welcome-card">
+            <div class="welcome-icon">🎉</div>
+            <h2>Turkcha Lug'at Testiga<br />Xush Kelibsiz!</h2>
+            <p class="subtitle">A1 Unit 1: İSİMLER (Otlar)</p>
+
+            <div class="features-grid">
+              <div class="feature">
+                <span class="feature-icon">📚</span>
+                <div>
+                  <strong>130+ so'z</strong>
+                  <span>Keng lug'at</span>
+                </div>
+              </div>
+              <div class="feature">
+                <span class="feature-icon">⏱️</span>
+                <div>
+                  <strong>30 soniya</strong>
+                  <span>Har bir savol</span>
+                </div>
+              </div>
+              <div class="feature">
+                <span class="feature-icon">🎮</span>
+                <div>
+                  <strong>Interaktiv</strong>
+                  <span>O'yinlashtirilgan</span>
+                </div>
+              </div>
+              <div class="feature">
+                <span class="feature-icon">📱</span>
+                <div>
+                  <strong>Mobil</strong>
+                  <span>Moslashtirilgan</span>
+                </div>
+              </div>
+            </div>
+
+            <button class="start-btn" onclick="startQuiz()">
+              <span>Testni Boshlash</span>
+              <span class="btn-icon">🚀</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Screen -->
+      <div id="quiz-screen" class="screen">
+        <div class="quiz-container">
+          <!-- Question Card -->
+          <div class="question-card">
+            <div class="question-header">
+              <span class="question-number" id="question-number">1</span>
+              <span class="question-label">savol</span>
+            </div>
+            <h2 id="question" class="question-text">
+              "elma" so'zi nimani anglatadi?
+            </h2>
+          </div>
+
+          <!-- Options -->
+          <div class="options-grid">
+            <button class="option-card" onclick="checkAnswer(0)">
+              <span class="option-letter">A</span>
+              <span class="option-text" id="option-0">Olma</span>
+            </button>
+            <button class="option-card" onclick="checkAnswer(1)">
+              <span class="option-letter">B</span>
+              <span class="option-text" id="option-1">Nok</span>
+            </button>
+            <button class="option-card" onclick="checkAnswer(2)">
+              <span class="option-letter">C</span>
+              <span class="option-text" id="option-2">Uzum</span>
+            </button>
+            <button class="option-card" onclick="checkAnswer(3)">
+              <span class="option-letter">D</span>
+              <span class="option-text" id="option-3">Banan</span>
+            </button>
+          </div>
+
+          <!-- Timer -->
+          <div class="timer-container">
+            <div class="timer-header">
+              <span>Vaqt qolgan:</span>
+              <span id="time-text">30 soniya</span>
+            </div>
+            <div class="timer">
+              <div id="timer-bar" class="timer-fill"></div>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="navigation-buttons">
+            <button
+              class="nav-btn secondary"
+              onclick="previousQuestion()"
+              id="prev-btn"
+            >
+              <span class="btn-icon">⬅️</span>
+              Orqaga
+            </button>
+            <button
+              class="nav-btn secondary"
+              onclick="finishQuiz()"
+              id="finish-btn"
+            >
+              <span class="btn-icon">🏁</span>
+              Yakunlash
+            </button>
+            <button
+              class="nav-btn primary"
+              onclick="nextQuestion()"
+              id="next-btn"
+            >
+              Keyingisi
+              <span class="btn-icon">➡️</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Screen -->
+      <div id="result-screen" class="screen">
+        <div class="result-container">
+          <div class="result-card">
+            <div class="result-icon">🎊</div>
+            <h2>Test Yakunlandi!</h2>
+            <p class="result-subtitle">Natijangizni ko'ring</p>
+
+            <div class="result-stats">
+              <div class="result-stat">
+                <div class="stat-circle">
+                  <span id="correct-count">0</span>
+                  <small>ta</small>
+                </div>
+                <span class="stat-label">To'g'ri javob</span>
+              </div>
+              <div class="result-stat">
+                <div class="stat-circle percentage">
+                  <span id="percentage">0%</span>
+                </div>
+                <span class="stat-label">Foiz</span>
+              </div>
+              <div class="result-stat">
+                <div class="stat-circle">
+                  <span id="average-time">0s</span>
+                </div>
+                <span class="stat-label">O'rtacha vaqt</span>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="action-btn secondary" onclick="showStartScreen()">
+                <span class="btn-icon">🏠</span>
+                Bosh Menyu
+              </button>
+              <button class="action-btn primary" onclick="restartQuiz()">
+                <span class="btn-icon">🔄</span>
+                Qayta Boshlash
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Celebration Animation -->
+      <div id="celebration" class="celebration">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
