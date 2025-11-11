@@ -1,497 +1,519 @@
-const vocabulary = [
-  { turkish: "ad (isim)", translation: "ism, ot, nom" },
-  { turkish: "ağaç", translation: "daraxt" },
-  { turkish: "alkol", translation: "alkagol" },
-  { turkish: "Almanya", translation: "Germanya" },
-  { turkish: "anneler günü", translation: "onalar kuni" },
-  { turkish: "araba", translation: "mashina (avtomobil)" },
-  { turkish: "arkadaş", translation: "örtoq, döst (oshna)" },
-  { turkish: "avukat", translation: "advokat" },
-  { turkish: "Avusturya", translation: "Avstriya" },
-  { turkish: "Az", translation: "oz, kam" },
-  { turkish: "Baba", translation: "ota" },
-  { turkish: "Bahçe", translation: "boğ" },
-  { turkish: "Balık", translation: "baliq" },
-  { turkish: "Banka", translation: "bank" },
-  { turkish: "Bardak", translation: "stakan" },
-  { turkish: "Bay", translation: "janob" },
-  { turkish: "Bayan", translation: "xonim" },
-  { turkish: "Bayram", translation: "bayram" },
-  { turkish: "Bebek", translation: "chaqaloq" },
-  { turkish: "Bey", translation: "yigit" },
-  { turkish: "Bilet", translation: "bilet, chipta" },
-  { turkish: "Bilgisayar", translation: "kompyuter" },
-  { turkish: "Bulaşık", translation: "yuvilmagan idish tovoq" },
-  { turkish: "Büro", translation: "ofis, buyro" },
-  { turkish: "Büyük", translation: "katta" },
-  { turkish: "Cami", translation: "masjid" },
-  { turkish: "Cetvel", translation: "chizğich" },
-  { turkish: "Ceviz", translation: "yonğoq" },
+ const UNITS = [
   {
-    turkish: "Çamaşır",
-    translation: "yuvilgan, yuvilishi kerak bo'lgan kiyimlar (kir)",
+    name: "1-Ünit A1 — İSİMLER-ismlar",
+    vocab: [
+      { tr: "ad (isim)", uz: "ism, ot, nom" },
+      { tr: "ağaç", uz: "daraxt" },
+      { tr: "alkol", uz: "alkagol" },
+      { tr: "Almanya", uz: "Germaniya" },
+      { tr: "anneler günü", uz: "onalar kuni" },
+      { tr: "araba", uz: "mashina (avtomobil)" },
+      { tr: "arkadaş", uz: "o‘rtoq, do‘st (oshna)" },
+      { tr: "avukat", uz: "advokat" },
+      { tr: "Avusturya", uz: "Avstriya" },
+      { tr: "Az", uz: "oz, kam" },
+      { tr: "Baba", uz: "ota" },
+      { tr: "Bahçe", uz: "bog‘" },
+      { tr: "Balık", uz: "baliq" },
+      { tr: "Banka", uz: "bank" },
+      { tr: "Bardak", uz: "stakan" },
+      { tr: "Bay", uz: "janob" },
+      { tr: "Bayan", uz: "xonim" },
+      { tr: "Bayram", uz: "bayram" },
+      { tr: "Bebek", uz: "chaqaloq" },
+      { tr: "Bey", uz: "yigit" },
+      { tr: "Bilet", uz: "bilet, chipta" },
+      { tr: "Bilgisayar", uz: "kompyuter" },
+      { tr: "Bulaşık", uz: "yuvilmagan idish tovoq" },
+      { tr: "Büro", uz: "ofis, byuro" },
+      { tr: "Büyük", uz: "katta" },
+      { tr: "Cami", uz: "masjid" },
+      { tr: "Cetvel", uz: "chizg‘ich" },
+      { tr: "Ceviz", uz: "yong‘oq" },
+      { tr: "Çamaşır", uz: "yuviladigan kiyimlar (kir)" },
+      { tr: "Çanta", uz: "sumka" },
+      { tr: "Çarşı", uz: "mahalla markazi, guzargoh" },
+      { tr: "Çay", uz: "choy" },
+      { tr: "Çiçek", uz: "gul" },
+      { tr: "Çin", uz: "Xitoy" },
+      { tr: "Çocuk", uz: "bola" },
+      { tr: "Çok", uz: "ko‘p" },
+      { tr: "Defter", uz: "daftar" },
+      { tr: "Deniz", uz: "dengiz" },
+      { tr: "Ders", uz: "dars" },
+      { tr: "doğum günü", uz: "tug‘ilgan kun" },
+      { tr: "doktor", uz: "shifokor" },
+      { tr: "dolap", uz: "shkaf" },
+      { tr: "düğün", uz: "to‘y" },
+      { tr: "eczane", uz: "dorixona" },
+      { tr: "ekmek", uz: "non" },
+      { tr: "elbise", uz: "ko‘ylak (ayollar uchun)" },
+      { tr: "elma", uz: "olma" },
+      { tr: "erkek", uz: "erkak (o‘g‘il bola)" },
+      { tr: "ev", uz: "uy" },
+      { tr: "fare", uz: "sichqon" },
+      { tr: "fındık", uz: "findiq, yong‘oq" },
+      { tr: "fırça", uz: "cho‘tka" },
+      { tr: "film", uz: "film" },
+      { tr: "Fransa", uz: "Fransiya" },
+      { tr: "Futbolcu", uz: "futbolchi" },
+      { tr: "Garson", uz: "ofitsiant" },
+      { tr: "Göz", uz: "ko‘z" },
+      { tr: "Gül", uz: "atirgul" },
+      { tr: "Güzel", uz: "chiroyli" },
+      { tr: "Hâl", uz: "hol, ahvol (bozor ma’nosida ham)" },
+      { tr: "Halı", uz: "gilam" },
+      { tr: "Hanım", uz: "xonim (ayolim)" },
+      { tr: "Hastalık", uz: "kasallik" },
+      { tr: "Havuç", uz: "sabzi" },
+      { tr: "Hayal", uz: "xayol, orzu, rüyo" },
+      { tr: "Hemşire", uz: "hamshira (erkaklarga ham ishlatiladi)" },
+      { tr: "Hiç", uz: "hech, umuman yo‘qlik ma’nosida" },
+      { tr: "Ispanak", uz: "ismaloq" },
+      { tr: "Izgara", uz: "qovurilgan (gril) taom" },
+      { tr: "İdeal", uz: "ideal, mukammal" },
+      { tr: "İnek", uz: "sigir" },
+      { tr: "İngiltere", uz: "Angliya" },
+      { tr: "İnsan", uz: "inson" },
+      { tr: "İspanya", uz: "Ispaniya" },
+      { tr: "İş", uz: "ish, yumush" },
+      { tr: "İtalya", uz: "Italiya" },
+      { tr: "Japonya", uz: "Yaponiya" },
+      { tr: "Jeton", uz: "jeton" },
+      { tr: "Jilet", uz: "britva" },
+      { tr: "Kadın", uz: "ayol, xotin" },
+      { tr: "Kafe", uz: "kafe" },
+      { tr: "Kahve", uz: "qahva" },
+      { tr: "Kalabalık", uz: "gavjum, tiqilinch" },
+      { tr: "Kalem", uz: "ruchka" },
+      { tr: "Kurşun kalem", uz: "qalam" },
+      { tr: "Kalp", uz: "yurak, qalb" },
+      { tr: "Kapı", uz: "eshik" },
+      { tr: "Kedi", uz: "mushuk" },
+      { tr: "Kız", uz: "qiz" },
+      { tr: "Kira", uz: "ijara" },
+      { tr: "Kişi", uz: "kishi" },
+      { tr: "Kitap", uz: "kitob" },
+      { tr: "Koltuk", uz: "orom kursi, skameyka" },
+      { tr: "Kore", uz: "Koreya" },
+      { tr: "Köpek", uz: "it" },
+      { tr: "Köy", uz: "qishloq" },
+      { tr: "Kuş", uz: "qush" },
+      { tr: "Kutu", uz: "quti" },
+      { tr: "Kütüphane", uz: "kutubxona" },
+      { tr: "Lale", uz: "lola" },
+      { tr: "Limon", uz: "limon" },
+      { tr: "Lokanta", uz: "oshxona (kichik ovqatlanish joyi)" },
+      { tr: "Lütfen", uz: "iltimos" },
+      { tr: "Mağaza", uz: "do‘kon (butik)" },
+      { tr: "Makas", uz: "qaychi" },
+      { tr: "Masa", uz: "stol" },
+      { tr: "Merdiven", uz: "zina" },
+      { tr: "Meşgul", uz: "band" },
+      { tr: "Metro", uz: "metro" },
+      { tr: "Millet", uz: "millat" },
+      { tr: "Misal", uz: "misol, o‘rnak" },
+      { tr: "Mühendis", uz: "muhandis (injener)" },
+      { tr: "Nar", uz: "anor" },
+      { tr: "Nijerya", uz: "Nigerya" },
+      { tr: "Numara", uz: "raqam" },
+      { tr: "Oda", uz: "xona" },
+      { tr: "Orman", uz: "o‘rmon" },
+      { tr: "Otel", uz: "mehmonxona" },
+      { tr: "Otobüs", uz: "avtobus" },
+      { tr: "Öğrenci", uz: "talaba, o‘quvchi" },
+      { tr: "Öğretmen", uz: "o‘qituvchi" },
+      { tr: "Ördek", uz: "o‘rdak" },
+      { tr: "Paket", uz: "paket" },
+      { tr: "Para", uz: "pul" },
+      { tr: "Pardösü", uz: "palto" },
+      { tr: "Park", uz: "park" },
+      { tr: "Patates", uz: "kartoshka" },
+      { tr: "Pencere", uz: "deraza" },
+      { tr: "Petrol", uz: "benzin" },
+      { tr: "Piyano", uz: "fortepiano" },
+      { tr: "Polis", uz: "politsiya" },
+      { tr: "Portakal", uz: "apelsin" },
+      { tr: "Postacı", uz: "pochtachi" },
+      { tr: "Radyo", uz: "radio" },
+      { tr: "Resim", uz: "rasm" },
+      { tr: "Rol", uz: "rol (aktyorlar uchun)" },
+      { tr: "Roman", uz: "rimlik" },
+      { tr: "Rusya", uz: "Rossiya" },
+      { tr: "Saat", uz: "soat" },
+      { tr: "Saç", uz: "soch" },
+      { tr: "Salon", uz: "zal, salon" },
+      { tr: "Sandalye", uz: "stul" },
+      { tr: "Sembol", uz: "ramz, belgi" },
+      { tr: "Seyahat", uz: "sayohat" },
+      { tr: "Sıra", uz: "navbat, parta qatori" },
+      { tr: "Silgi", uz: "o‘chirg‘ich" },
+      { tr: "Sokak", uz: "ko‘cha" },
+      { tr: "Soru", uz: "savol" },
+      { tr: "Sorun", uz: "muammo" },
+      { tr: "Sözlük", uz: "lug‘at" },
+      { tr: "Suriye", uz: "Suriya" },
+      { tr: "Şarkıcı", uz: "qo‘shiqchi" },
+      { tr: "Şemsiye", uz: "soyabon (zontik)" },
+      { tr: "Şişe", uz: "shisha (idish)" },
+      { tr: "Tahta", uz: "doska, taxta" },
+      { tr: "Tavuk", uz: "tovuq" },
+      { tr: "Telefon", uz: "telefon" },
+      { tr: "Temiz", uz: "toza" },
+      { tr: "Top", uz: "koptok" },
+      { tr: "Turist", uz: "turist" },
+      { tr: "Türkiye", uz: "Turkiya" },
+      { tr: "Uçak", uz: "samolyot" },
+      { tr: "Uçurtma", uz: "varrak" },
+      { tr: "Üzüm", uz: "uzum" },
+      { tr: "Vagon", uz: "vagon" },
+      { tr: "Vazo", uz: "vaza" },
+      { tr: "Yabancı", uz: "begona, chet ellik" },
+      { tr: "Yemek", uz: "ovqat" },
+      { tr: "yeni yıl", uz: "yangi yil" },
+      { tr: "yıldız", uz: "yulduz" },
+      { tr: "yüzük", uz: "uzuk" },
+      { tr: "zeytin", uz: "zaytun" },
+      { tr: "zürafa", uz: "jirafa" },
+      // iboralar
+      { tr: "Affedersiniz", uz: "kechirasiz" },
+      { tr: "Afiyet olsun", uz: "yoqimli ishtaha, osh bo‘lsin" },
+      { tr: "Bol şanslar", uz: "omad yor bo‘lsin" },
+      { tr: "Çok yaşa", uz: "ko‘p yashang" },
+      { tr: "Geçmiş olsun", uz: "o‘tganing rostdan bo‘lsin" },
+      { tr: "Görüşürüz", uz: "ko‘rishguncha" },
+      { tr: "Güle güle", uz: "xayr" },
+      { tr: "Günaydın", uz: "xayrli tong" },
+      { tr: "Hoş bulduk", uz: "xush ko‘rdik" },
+      { tr: "Hoş geldin", uz: "xush kelibsiz" },
+      { tr: "Hoşça kal", uz: "yaxshi qol" },
+      { tr: "Lütfen", uz: "iltimos" },
+      { tr: "Merhaba", uz: "salom" },
+      { tr: "Özür dilerim", uz: "kechiring, uzr so‘rayman" },
+      { tr: "Rica ederim", uz: "arzimaydi" },
+      { tr: "Tamam", uz: "bo‘ldi, xo‘p, tamom" },
+      { tr: "Tebrikler", uz: "tabriklayman, qutlayman" },
+      { tr: "Üzgünüm", uz: "xafaman" },
+    ],
   },
-  { turkish: "Çanta", translation: "sumka" },
-  { turkish: "Çarşı", translation: "mahalla markazi, guzargoh" },
-  { turkish: "Çay", translation: "choy" },
-  { turkish: "Çiçek", translation: "gül" },
-  { turkish: "Çin", translation: "Xitoy" },
-  { turkish: "Çocuk", translation: "bola" },
-  { turkish: "Çok", translation: "köp" },
-  { turkish: "Defter", translation: "daftar" },
-  { turkish: "Deniz", translation: "dengiz" },
-  { turkish: "Ders", translation: "dars" },
-  { turkish: "doğum günü", translation: "tuğilgan kun" },
-  { turkish: "doktor", translation: "shifokor" },
-  { turkish: "dolap", translation: "shkaf" },
-  { turkish: "düğün", translation: "töy" },
-  { turkish: "eczane", translation: "dorixona" },
-  { turkish: "ekmek", translation: "non" },
-  { turkish: "elbise", translation: "köylak (ayyollar köylagi)" },
-  { turkish: "elma", translation: "olma" },
-  { turkish: "erkek", translation: "erkak (öğil bola)" },
-  { turkish: "ev", translation: "uy" },
-  { turkish: "fare", translation: "sichqon" },
-  { turkish: "fındık", translation: "findiq yonğoği" },
-  { turkish: "fırça", translation: "chötka" },
-  { turkish: "film", translation: "film" },
-  { turkish: "Fransa", translation: "Fransiya" },
-  { turkish: "Futbolcu", translation: "fudbolchi" },
-  { turkish: "Garson", translation: "ofitsant" },
-  { turkish: "Göz", translation: "köz" },
-  { turkish: "Gül", translation: "atir gul" },
-  { turkish: "Güzel", translation: "chiroyli" },
   {
-    turkish: "Hâl",
-    translation:
-      "hol-ahvol (ulgurji meva, savzavot, kökatlar sotiladigan bozor)",
+    name: "2-Ünit A1",
+    vocab: [
+      { tr: "Aç", uz: "ochmoq, (och=qornim och (sifat))" },
+      { tr: "Açık", uz: "ochiq" },
+      { tr: "Adres", uz: "manzil" },
+      { tr: "Akşam", uz: "oqshom" },
+      { tr: "Alışveriş", uz: "bozor qilish, xarid qilmoq" },
+      { tr: "alışveriş merkezi", uz: "savdo markazi" },
+      { tr: "alt", uz: "tag, ost" },
+      { tr: "anahtar", uz: "kalit" },
+      { tr: "artı", uz: "qo‘shuv ishorati (+)" },
+      { tr: "ay", uz: "oy" },
+      { tr: "banka", uz: "bank" },
+      { tr: "başarılı", uz: "muvaffaqiyatli" },
+      { tr: "bekâr", uz: "bo‘ydoq, turmush qurmagan" },
+      { tr: "bina", uz: "bino" },
+      { tr: "birçok", uz: "birqancha" },
+      { tr: "boş", uz: "bo‘sh" },
+      { tr: "bölü", uz: "bo‘lish ishorati (:)" },
+      { tr: "bugün", uz: "bugun" },
+      { tr: "burada", uz: "bu yerda" },
+      { tr: "bütün", uz: "butun" },
+      { tr: "cesur", uz: "jasur" },
+      { tr: "ciddi", uz: "jiddiy" },
+      { tr: "çalışkan", uz: "mehnatkash" },
+      { tr: "çarpı", uz: "ko‘paytirish ishorati (X)" },
+      { tr: "çirkin", uz: "xunuk" },
+      { tr: "çöp kutusu", uz: "axlat idishi" },
+      { tr: "çünkü", uz: "chunki" },
+      { tr: "dağınık", uz: "tartibsiz" },
+      { tr: "Dar", uz: "tor" },
+      { tr: "Dergi", uz: "jurnal" },
+      { tr: "Dikkatli", uz: "diqqatli" },
+      { tr: "Dikkatsiz", uz: "diqqatsiz, beparvo" },
+      { tr: "doğum tarihi", uz: "tug‘ilgan sanasi" },
+      { tr: "dolu", uz: "to‘la" },
+      { tr: "domates", uz: "pomidor" },
+      { tr: "dosya", uz: "hujjat, fayl" },
+      { tr: "durak", uz: "bekat" },
+      { tr: "duvar", uz: "devor" },
+      { tr: "düzenli", uz: "tartibli" },
+      { tr: "eczacı", uz: "dorixonachi" },
+      { tr: "eğlenceli", uz: "qiziqarli" },
+      { tr: "eksi", uz: "ayiruv ishorati (-)" },
+      { tr: "evli", uz: "turmush qurgan, oilali" },
+      { tr: "fakir", uz: "faqir, kambag‘al" },
+      { tr: "fark", uz: "farq" },
+      { tr: "fırın", uz: "qandolat va non pishirish pechi" },
+      { tr: "gazete", uz: "gazeta" },
+      { tr: "genç", uz: "yosh (yosh qiz-genç kız)" },
+      { tr: "genellikle", uz: "odatda, asosan" },
+      { tr: "geniş", uz: "kenge" },
+      { tr: "güçlü", uz: "kuchli" },
+      { tr: "güçsüz", uz: "kuchsiz" },
+      { tr: "gün", uz: "kun (gap ma’nosida ham)" },
+      { tr: "gündüz", uz: "kunduz" },
+      { tr: "hafta sonu", uz: "dam olish kunlari (shanba-yakshanba)" },
+      { tr: "hasta", uz: "kasal" },
+      { tr: "hastane", uz: "kasalxona" },
+      { tr: "her", uz: "har" },
+      { tr: "her zaman", uz: "har vaqt" },
+      { tr: "hızlı", uz: "tez" },
+      { tr: "içecek", uz: "ichiladigan narsalar (suv, choy, ayran…)" },
+      { tr: "istasyon", uz: "bekat, stansiya (poezd bekati)" },
+      { tr: "iyi", uz: "yaxshi" },
+      { tr: "kaç", uz: "nechi, qancha" },
+      { tr: "kaçıncı", uz: "nechinchi" },
+      { tr: "kantin", uz: "kantin (universitet, maktab oshxonasi)" },
+      { tr: "kapalı", uz: "yopiq (kapalı kız - o‘rangan qiz)" },
+      { tr: "kasap", uz: "qassob" },
+      { tr: "kasiyer", uz: "kasiyer" },
+      { tr: "kat", uz: "qavat" },
+      { tr: "kırmızı", uz: "qizil" },
+      { tr: "kıskanç", uz: "qizg‘anchiq, rashkchi" },
+      { tr: "kibar", uz: "xushmuomala, jentelmen" },
+      { tr: "kilo", uz: "kilo" },
+      { tr: "kitaplık", uz: "kitob taxlanadigan javon" },
+      { tr: "kolay", uz: "qulay, oson" },
+      { tr: "komik", uz: "komik, kulgili" },
+      { tr: "konuşkan", uz: "ko‘p gapiradigan" },
+      { tr: "koridor", uz: "zal, qator" },
+      { tr: "kötü", uz: "yomon" },
+      { tr: "kuaför", uz: "sartarosh" },
+      { tr: "kuyumcu", uz: "zargar" },
+      { tr: "lamba", uz: "lampa, chiroq" },
+      { tr: "mahalle", uz: "mahalla" },
+      { tr: "manav", uz: "meva-sabzavot do‘koni" },
+      { tr: "market", uz: "market" },
+      { tr: "mutfak", uz: "oshxona (uyimizda yozgi va qishki)" },
+      { tr: "mutlu", uz: "xursand, baxtli" },
+      { tr: "mutsuz", uz: "xafa, baxtsiz" },
+      { tr: "nerede", uz: "qayerda" },
+      { tr: "nesne", uz: "jonsiz narsa" },
+      { tr: "niçin", uz: "nima uchun" },
+      { tr: "ocak", uz: "gaz plitasi (yanvar oy ma’nosida ham)" },
+      { tr: "ofis", uz: "ofis" },
+      { tr: "orada", uz: "u yerda" },
+      { tr: "öğleden sonra", uz: "tushdan keyin" },
+      { tr: "önemli", uz: "muhim, ahamiyati" },
+      { tr: "önemsiz", uz: "ahamiyatsiz" },
+      { tr: "pahalı", uz: "qimmat" },
+      { tr: "pastane", uz: "qandolat, tort va shirinlik do‘koni" },
+      { tr: "pembe", uz: "pushti" },
+      { tr: "postane", uz: "pochtaxona" },
+      { tr: "projektör", uz: "projektor (kuchli yoritgich)" },
+      { tr: "psikolog", uz: "psixolog" },
+      { tr: "resepsiyonist", uz: "mehmonxonalarda resepsiyonist" },
+      { tr: "sabah", uz: "tong, saboh" },
+      { tr: "sakin", uz: "sokin" },
+      { tr: "sayı", uz: "raqam, sanoq" },
+      { tr: "sehpa", uz: "qahva stol" },
+      { tr: "sekreter", uz: "kotiba" },
+      { tr: "semt", uz: "turar joy dahasi, guzargoh" },
+      { tr: "sessiz", uz: "ovozsiz, tinch" },
+      { tr: "sıcak", uz: "issiq" },
+      { tr: "sıfat", uz: "sifat" },
+      { tr: "sinirli", uz: "asabiy" },
+      { tr: "sosyal", uz: "ijtimoiy (sotsial)" },
+      { tr: "soyadı", uz: "familya" },
+      { tr: "şehir", uz: "shahar" },
+      { tr: "şimdi", uz: "hozir" },
+      { tr: "şişman", uz: "semiz, maqaloq" },
+      { tr: "tabak", uz: "tarelka (osh tovoq, lagan)" },
+      { tr: "tarih", uz: "tarix, sana" },
+      { tr: "tatil", uz: "dam olish" },
+      { tr: "tehlikeli", uz: "tahlikali, xavfli" },
+      { tr: "tembel", uz: "ishyoqmas, tanbal" },
+      { tr: "tezgâhtar", uz: "savdo sotuvchisi" },
+      { tr: "tuzlu", uz: "tuzli" },
+      { tr: "ucuz", uz: "arzon" },
+      { tr: "uzak", uz: "uzo‘q" },
+      { tr: "üst", uz: "ust" },
+      { tr: "var", uz: "bor" },
+      { tr: "yakın", uz: "yaqin" },
+      { tr: "yastık", uz: "yostiq" },
+      { tr: "yaş", uz: "yosh" },
+      { tr: "yaşlı", uz: "qari" },
+      { tr: "yavaş", uz: "sekin, asta" },
+      { tr: "yazı tahtası", uz: "doska" },
+      { tr: "yer", uz: "yer" },
+      { tr: "yıl", uz: "yil" },
+      { tr: "yiyecek", uz: "yegulik" },
+      { tr: "yoğun", uz: "jadal, band" },
+      { tr: "yok", uz: "yo‘q" },
+      { tr: "yorgun", uz: "charchoq" },
+      { tr: "zamir", uz: "asosi, olmosh" },
+      { tr: "zayıf", uz: "ozgin, oriq" },
+      { tr: "zengin", uz: "boy" },
+      { tr: "aramak", uz: "qidirmoq, telefon qilmoq" },
+    ],
   },
-  { turkish: "Halı", translation: "gilam" },
-  { turkish: "Hanım", translation: "xonim (ayolim)" },
-  { turkish: "Hastalık", translation: "kasallik" },
-  { turkish: "Havuç", translation: "sabzi" },
-  { turkish: "Hayal", translation: "hayol, röyo" },
-  {
-    turkish: "Hemşire",
-    translation: "hamshira (erkaklarga nisbatan ham ishlatiladi)",
-  },
-  { turkish: "Hiç", translation: "hech, umuman yöqlik ma'nosida" },
-  { turkish: "Ispanak", translation: "ismaloq" },
-  { turkish: "Izgara", translation: "qör" },
-  { turkish: "İdeal", translation: "ideal, mukammal ma'nosida" },
-  { turkish: "İnek", translation: "sigir" },
-  { turkish: "İngiltere", translation: "Angliya" },
-  { turkish: "İnsan", translation: "inson" },
-  { turkish: "İspanya", translation: "Ispanya" },
-  { turkish: "İş", translation: "ish, yumush" },
-  { turkish: "İtalya", translation: "Italya" },
-  { turkish: "Japonya", translation: "Yaponya" },
-  { turkish: "Jeton", translation: "jeton" },
-  { turkish: "Jilet", translation: "britva" },
-  { turkish: "Kadın", translation: "ayol, xotin" },
-  { turkish: "Kafe", translation: "kafe" },
-  { turkish: "Kahve", translation: "qahva" },
-  { turkish: "Kalabalık", translation: "gavjum, tiqilinch" },
-  { turkish: "Kalem", translation: "ruchka" },
-  { turkish: "Kurşun kalem", translation: "qalam" },
-  { turkish: "Kalp", translation: "yurak, qalb" },
-  { turkish: "Kapı", translation: "eshik" },
-  { turkish: "Kedi", translation: "mushuk" },
-  { turkish: "Kız", translation: "qiz" },
-  { turkish: "Kira", translation: "ijara" },
-  { turkish: "Kişi", translation: "kishi" },
-  { turkish: "Kitap", translation: "kitob" },
-  { turkish: "Koltuk", translation: "orom kursi, (skameka)" },
-  { turkish: "Kore", translation: "Koreya" },
-  { turkish: "Köpek", translation: "it" },
-  { turkish: "Köy", translation: "qishloq" },
-  { turkish: "Kuş", translation: "qush" },
-  { turkish: "Kutu", translation: "quttiq" },
-  { turkish: "Kütüphane", translation: "kutubxona" },
-  { turkish: "Lale", translation: "lola" },
-  { turkish: "Limon", translation: "limon" },
-  { turkish: "Lokanta", translation: "oshxona (kichik ovqatlanish joyi)" },
-  { turkish: "Lütfen", translation: "iltimos" },
-  { turkish: "Mağaza", translation: "butik (dikon)" },
-  { turkish: "Makas", translation: "qaychi" },
-  { turkish: "Masa", translation: "stol" },
-  { turkish: "Merdiven", translation: "zina" },
-  { turkish: "Meşgul", translation: "band" },
-  { turkish: "Metro", translation: "metro" },
-  { turkish: "Millet", translation: "millat" },
-  { turkish: "Misal", translation: "misol, örnak" },
-  { turkish: "Mühendis", translation: "muhandis (injiner)" },
-  { turkish: "Nar", translation: "anor" },
-  { turkish: "Nijerya", translation: "Nigerya" },
-  { turkish: "Numara", translation: "raqam" },
-  { turkish: "Oda", translation: "xona" },
-  { turkish: "Orman", translation: "ormon" },
-  { turkish: "Otel", translation: "mehmonxona" },
-  { turkish: "Otobüs", translation: "avtobus" },
-  { turkish: "Öğrenci", translation: "talaba, öquvchi" },
-  { turkish: "Öğretmen", translation: "öqituvchi" },
-  { turkish: "Ördek", translation: "örnak, misol (masalan)" },
-  { turkish: "Paket", translation: "paket" },
-  { turkish: "Para", translation: "pul" },
-  { turkish: "Pardösü", translation: "palto" },
-  { turkish: "Park", translation: "park" },
-  { turkish: "Patates", translation: "kartoshka" },
-  { turkish: "Pencere", translation: "deraza" },
-  { turkish: "Petrol", translation: "benzín" },
-  { turkish: "Piyano", translation: "fortepiano" },
-  { turkish: "Polis", translation: "palitsiya" },
-  { turkish: "Portakal", translation: "apelsin" },
-  { turkish: "Postacı", translation: "pochtachi" },
-  { turkish: "Radyo", translation: "radio" },
-  { turkish: "Resim", translation: "rasm" },
-  { turkish: "Rol", translation: "röl (aktiyorlar uchun ishlatiladi)" },
-  { turkish: "Roman", translation: "Rimlik" },
-  { turkish: "Rusya", translation: "Rossiya" },
-  { turkish: "Saat", translation: "soat" },
-  { turkish: "Saç", translation: "soch" },
-  { turkish: "Salon", translation: "zal, salon" },
-  { turkish: "Sandalye", translation: "stul" },
-  { turkish: "Sembol", translation: "ramz, belgi" },
-  { turkish: "Seyahat", translation: "sayohat" },
-  { turkish: "Sıra", translation: "navbat, parta qatorlari" },
-  { turkish: "Silgi", translation: "öchirğich" },
-  { turkish: "Sokak", translation: "köcha" },
-  { turkish: "Soru", translation: "savol" },
-  { turkish: "Sorun", translation: "mammo" },
-  { turkish: "Sözlük", translation: "luğat" },
-  { turkish: "Suriye", translation: "Surya" },
-  { turkish: "Şarkıcı", translation: "qöshiqchi" },
-  { turkish: "Şemsiye", translation: "soyabon (zontik)" },
-  {
-    turkish: "Şişe",
-    translation: "shisha, (baklashkaga nisbatan ham ishlatiladi)",
-  },
-  { turkish: "Tahta", translation: "doska, taxta" },
-  { turkish: "Tavuk", translation: "tovuq" },
-  { turkish: "Telefon", translation: "telefon" },
-  { turkish: "Temiz", translation: "toza" },
-  { turkish: "Top", translation: "koptok (top mingtalik…)" },
-  { turkish: "Turist", translation: "turist" },
-  { turkish: "Türkiye", translation: "Turkiya" },
-  { turkish: "Uçak", translation: "samaliyot" },
-  { turkish: "Uçurtma", translation: "varrak" },
-  { turkish: "Üzüm", translation: "uzum" },
-  { turkish: "Vagon", translation: "vagon" },
-  { turkish: "Vazo", translation: "vaza" },
-  { turkish: "Yabancı", translation: "begona, chet-ellik" },
-  { turkish: "Yemek", translation: "yemak, ovqat" },
-  { turkish: "yeni yıl", translation: "yangi yil" },
-  { turkish: "yıldız", translation: "yuldiz" },
-  { turkish: "yüzük", translation: "uzuk" },
-  { turkish: "zeytin", translation: "zaytun" },
-  { turkish: "zürafa", translation: "jirafa" },
-  { turkish: "Affedersiniz", translation: "kechirasiz (excuse me)" },
-  { turkish: "Afiyet olsun", translation: "yoqimli ishtaha, osh bölsin" },
-  { turkish: "Bol şanslar", translation: "omad yor bölsin" },
-  { turkish: "Çok yaşa", translation: "soğ böl, köp yasha" },
-  {
-    turkish: "Geçmiş olsun",
-    translation: "ötgani rost bölsin (körgan kechirganing shu bölsin)",
-  },
-  { turkish: "Görüşürüz, Görüşmek üzere", translation: "körishguncha" },
-  { turkish: "Güle güle", translation: "xayr (bye)" },
-  { turkish: "Günaydın", translation: "xayrli tong" },
-  { turkish: "Hoş bulduk", translation: "xush kördik" },
-  { turkish: "Hoş geldin", translation: "xush kelibsiz" },
-  { turkish: "Hoşça kal", translation: "yaxshi qol" },
-  { turkish: "Lütfen", translation: "iltimos" },
-  { turkish: "Merhaba", translation: "salom (Hello)" },
-  { turkish: "Özür dilerim", translation: "kechiring, uzr sörayman" },
-  { turkish: "Rica ederim", translation: "arzimaydi" },
-  { turkish: "Tamam", translation: "böldi, xöp, tamom" },
-  { turkish: "Tebrikler", translation: "tabriklamoq, qutlamoq (congratulate)" },
-  { turkish: "Üzgünüm", translation: "xafaman (xafa bölmoq)" },
-  { turkish: "Etmek", translation: "…etmoq" },
-  { turkish: "Gelmek", translation: "kelmoq" },
-  { turkish: "Görüşmek", translation: "körishmoq" },
-  { turkish: "Olmak", translation: "bölmoq" },
 ];
 
-let currentQuestion = 0;
-let score = 0;
-let startTime;
-let answerTimes = [];
-let timerInterval;
+const unitSelectDiv = document.getElementById("unit-select");
+const quizSection = document.getElementById("quiz-section");
+const questionDiv = document.getElementById("question");
+const optionsDiv = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+const endBtn = document.getElementById("endBtn");
+const resultDiv = document.getElementById("result");
+const progressDiv = document.getElementById("progress");
+const finishSection = document.getElementById("finish-section");
+const finalScoreDiv = document.getElementById("final-score");
+const retryBtn = document.getElementById("retryBtn");
+const chooseUnitBtn = document.getElementById("chooseUnitBtn");
+const reviewListDiv = document.getElementById("review-list");
 
-let timeLeft = 30;
-let userAnswers = new Array(vocabulary.length).fill(null);
-let answeredQuestions = new Set();
+let currentUnit, questions, order, currentQuestionIdx, score, answers;
 
-// Dasturni ishga tushirish
-document.addEventListener("DOMContentLoaded", function () {
-  updateGlobalProgress();
-});
-
-// Global progress yangilash
-function updateGlobalProgress() {
-  const progress = (currentQuestion / vocabulary.length) * 100;
-  document.getElementById("global-progress").style.width = progress + "%";
+function renderUnitSelect() {
+  unitSelectDiv.innerHTML = `<h2>Unit(bo'lim)ni tanlang:</h2>`;
+  UNITS.forEach((unit, idx) => {
+    const btn = document.createElement("button");
+    btn.textContent = `${unit.name} (${unit.vocab.length} savol)`;
+    btn.className = "unit-btn";
+    btn.onclick = () => startQuiz(idx);
+    unitSelectDiv.appendChild(btn);
+  });
+  quizSection.style.display = "none";
+  finishSection.style.display = "none";
+  unitSelectDiv.style.display = "flex";
 }
 
-// O'yinni boshlash
-function startQuiz() {
-  currentQuestion = 0;
+function startQuiz(unitIdx) {
+  currentUnit = UNITS[unitIdx];
+  questions = shuffle([...currentUnit.vocab]);
+  order = Array.from(Array(questions.length).keys());
+  currentQuestionIdx = 0;
   score = 0;
-  answerTimes = [];
-  timeLeft = 30;
-  userAnswers.fill(null);
-  answeredQuestions.clear();
-
-  document.getElementById("start-screen").classList.remove("active");
-  document.getElementById("quiz-screen").classList.add("active");
-
-  updateStats();
+  answers = Array(questions.length).fill(null);
+  unitSelectDiv.style.display = "none";
+  quizSection.style.display = "block";
+  finishSection.style.display = "none";
   showQuestion();
-  updateNavigationButtons();
+  resultDiv.textContent = "";
 }
 
-// Savolni ko'rsatish
 function showQuestion() {
-  if (currentQuestion >= vocabulary.length) {
-    endQuiz();
-    return;
-  }
-
-  const question = vocabulary[currentQuestion];
-  document.getElementById("question-number").textContent = currentQuestion + 1;
-  document.getElementById(
-    "question"
-  ).textContent = `"${question.translation}" so'zi turk tilida qanday aytiladi?`;
-
-  // Variantlarni tayyorlash
-  const options = generateOptions(question);
-  const optionCards = document.querySelectorAll(".option-card");
-
-  optionCards.forEach((card, index) => {
-    document.getElementById(`option-${index}`).textContent = options[index];
-    card.className = "option-card";
-
-    // Agar oldin javob berilgan bo'lsa
-    if (userAnswers[currentQuestion] !== null) {
-      const correctIndex = options.indexOf(question.turkish);
-      if (index === correctIndex) {
-        card.classList.add("correct");
-      } else if (index === userAnswers[currentQuestion]) {
-        card.classList.add("incorrect");
-      }
-      card.style.pointerEvents = "none";
-    } else {
-      card.style.pointerEvents = "auto";
-    }
-  });
-
-  // Timer ni boshlash
-  startTimer();
-  updateStats();
-  updateGlobalProgress();
-  updateNavigationButtons();
-}
-
-// Variantlarni yaratish
-function generateOptions(correctQuestion) {
-  const options = [correctQuestion.turkish];
-
-  while (options.length < 4) {
-    const randomIndex = Math.floor(Math.random() * vocabulary.length);
-    const randomWord = vocabulary[randomIndex];
-
-    if (
-      !options.includes(randomWord.turkish) &&
-      randomWord.translation !== correctQuestion.translation
-    ) {
-      options.push(randomWord.turkish);
-    }
-  }
-
-  return shuffleArray(options);
-}
-
-// Massivni aralashtirish
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
-// Javobni tekshirish
-function checkAnswer(selectedIndex) {
-  if (answeredQuestions.has(currentQuestion)) return;
-
-  clearInterval(timerInterval);
-  answeredQuestions.add(currentQuestion);
-  userAnswers[currentQuestion] = selectedIndex;
-
-  const question = vocabulary[currentQuestion];
-  const optionCards = document.querySelectorAll(".option-card");
-  const options = Array.from(optionCards).map(
-    (card, index) => document.getElementById(`option-${index}`).textContent
-  );
-  const correctIndex = options.indexOf(question.turkish);
-
-  // Vaqtni hisoblash
-  const endTime = new Date();
-  const timeTaken = (endTime - startTime) / 1000;
-  answerTimes.push(timeTaken);
-
-  // Javoblarni rang bilan ko'rsatish
-  optionCards.forEach((card, index) => {
-    card.style.pointerEvents = "none";
-    if (index === correctIndex) {
-      card.classList.add("correct");
-      if (index === selectedIndex) {
-        // To'g'ri javob animatsiyasi
-        showCelebration();
-      }
-    } else if (index === selectedIndex && index !== correctIndex) {
-      card.classList.add("incorrect");
-    }
-  });
-
-  // Ballarni hisoblash
-  if (selectedIndex === correctIndex) {
-    score++;
-    updateStats();
-  }
-
-  updateNavigationButtons();
-}
-
-// Animatsiyani ko'rsatish
-function showCelebration() {
-  const celebration = document.getElementById("celebration");
-  celebration.style.display = "block";
-
-  setTimeout(() => {
-    celebration.style.display = "none";
-  }, 2000);
-}
-
-// Keyingi savol
-function nextQuestion() {
-  if (currentQuestion < vocabulary.length - 1) {
-    currentQuestion++;
-    timeLeft = 30;
-    showQuestion();
-  } else {
-    endQuiz();
-  }
-}
-
-// Oldingi savol
-function previousQuestion() {
-  if (currentQuestion > 0) {
-    currentQuestion--;
-    timeLeft = 30;
-    showQuestion();
-  }
-}
-
-// Testni yakunlash
-function finishQuiz() {
-  if (confirm("Testni yakunlamoqchimisiz?")) {
-    endQuiz();
-  }
-}
-
-// Timer ni boshlash
-function startTimer() {
-  startTime = new Date();
-  timeLeft = 30;
-  const timerBar = document.getElementById("timer-bar");
-  const timeText = document.getElementById("time-text");
-
-  timerBar.style.width = "100%";
-  timerBar.style.background =
-    "linear-gradient(90deg, var(--success), var(--warning), var(--danger))";
-
-  clearInterval(timerInterval);
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    const percentage = (timeLeft / 30) * 100;
-
-    timerBar.style.width = percentage + "%";
-    timeText.textContent = `${timeLeft} soniya`;
-
-    // Timer rangini o'zgartirish
-    if (timeLeft > 15) {
-      timerBar.style.background =
-        "linear-gradient(90deg, var(--success), var(--warning))";
-    } else if (timeLeft > 5) {
-      timerBar.style.background = "var(--warning)";
-    } else {
-      timerBar.style.background = "var(--danger)";
-    }
-
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      // Vaqt tugaganda keyingi savol
-      if (!answeredQuestions.has(currentQuestion)) {
-        userAnswers[currentQuestion] = -1; // Javob berilmagan
-      }
-      nextQuestion();
-    }
-  }, 1000);
-}
-
-// Navigation tugmalarini yangilash
-function updateNavigationButtons() {
-  const prevBtn = document.getElementById("prev-btn");
-  const nextBtn = document.getElementById("next-btn");
-  const finishBtn = document.getElementById("finish-btn");
-
-  prevBtn.disabled = currentQuestion === 0;
-  nextBtn.disabled = currentQuestion === vocabulary.length - 1;
-
-  if (currentQuestion === vocabulary.length - 1) {
-    nextBtn.textContent = "Yakunlash";
-  } else {
-    nextBtn.innerHTML = 'Keyingisi <span class="btn-icon">➡️</span>';
-  }
-}
-
-// Statistikalarni yangilash
-function updateStats() {
-  document.getElementById("score").textContent = score;
-  document.getElementById("progress").textContent = `${currentQuestion + 1}/${
-    vocabulary.length
+  progressDiv.textContent = `Savol: ${currentQuestionIdx + 1} / ${
+    questions.length
   }`;
-  document.getElementById("timer-display").textContent = `${timeLeft}s`;
+  resultDiv.textContent = "";
+  prevBtn.style.display = currentQuestionIdx > 0 ? "" : "none";
+  nextBtn.style.display = answers[currentQuestionIdx] !== null ? "" : "none";
+  endBtn.style.display = "";
+  const question = questions[currentQuestionIdx];
+  questionDiv.innerHTML = `<span>O'zbekcha: <b>${question.uz}</b></span>
+   <br><span style="font-size:0.97em;color:#666">Turkchasini tanlang:</span>`;
+  const options = generateOptions(question.tr, currentUnit.vocab);
+  optionsDiv.innerHTML = "";
+  options.forEach((opt) => {
+    const btn = document.createElement("button");
+    btn.textContent = opt;
+    btn.disabled = answers[currentQuestionIdx] !== null;
+    if (answers[currentQuestionIdx] !== null) {
+      let answer = answers[currentQuestionIdx];
+      if (opt === answer.selected)
+        btn.classList.add(
+          answer.selected === answer.correct ? "active" : "wrong"
+        );
+      if (opt === answer.correct) btn.classList.add("active");
+    }
+    btn.onclick = () => answerQuestion(btn, opt, question.tr);
+    optionsDiv.appendChild(btn);
+  });
+  if (answers[currentQuestionIdx] !== null) {
+    let answer = answers[currentQuestionIdx];
+    resultDiv.innerHTML =
+      answer.selected === answer.correct
+        ? "Toʻgʻri!"
+        : `<span>Xato! <span style="color:#43d197;">To'g'ri javob: <b>${answer.correct}</b></span></span>`;
+  }
 }
 
-// Testni tugatish
-function endQuiz() {
-  clearInterval(timerInterval);
-  document.getElementById("quiz-screen").classList.remove("active");
-  document.getElementById("result-screen").classList.add("active");
-
-  const answeredCount = answeredQuestions.size;
-  const percentage = Math.round((score / answeredCount) * 100) || 0;
-  const averageTime =
-    answerTimes.length > 0
-      ? (answerTimes.reduce((a, b) => a + b, 0) / answerTimes.length).toFixed(1)
-      : 0;
-
-  document.getElementById("correct-count").textContent = score;
-  document.getElementById("percentage").textContent = `${percentage}%`;
-  document.getElementById("average-time").textContent = `${averageTime}s`;
+function answerQuestion(btn, selected, correct) {
+  Array.from(optionsDiv.children).forEach((optionBtn) => {
+    optionBtn.disabled = true;
+    if (optionBtn.textContent === correct) optionBtn.classList.add("active");
+    if (optionBtn.textContent === selected && selected !== correct)
+      optionBtn.classList.add("wrong");
+  });
+  answers[currentQuestionIdx] = {
+    selected,
+    correct,
+    uz: questions[currentQuestionIdx].uz,
+    tr: questions[currentQuestionIdx].tr,
+  };
+  nextBtn.style.display = "";
+  resultDiv.innerHTML =
+    selected === correct
+      ? "Toʻgʻri!"
+      : `<span>Xato! <span style="color:#43d197;">To'g'ri javob: <b>${correct}</b></span></span>`;
 }
 
-// Qayta boshlash
-function restartQuiz() {
-  document.getElementById("result-screen").classList.remove("active");
-  document.getElementById("quiz-screen").classList.add("active");
-  startQuiz();
+nextBtn.onclick = () => {
+  if (currentQuestionIdx < questions.length - 1) {
+    currentQuestionIdx++;
+    showQuestion();
+  } else {
+    showResult();
+  }
+};
+prevBtn.onclick = () => {
+  if (currentQuestionIdx > 0) {
+    currentQuestionIdx--;
+    showQuestion();
+  }
+};
+endBtn.onclick = showResult;
+
+function showResult() {
+  quizSection.style.display = "none";
+  finishSection.style.display = "block";
+  score = answers.filter((a) => a && a.selected === a.correct).length;
+  finalScoreDiv.innerHTML = `<span>Natija:</span> <span style="font-size:1.27em;">${score} / ${
+    questions.length
+  }</span> <br>
+    <span>${Math.round((100 * score) / questions.length)}% to'g'ri</span>`;
+  reviewListDiv.innerHTML = "";
+  answers.forEach((ans, idx) => {
+    if (ans) {
+      const div = document.createElement("div");
+      div.className = `review ${
+        ans.selected === ans.correct ? "correct" : "wrong"
+      }`;
+      div.innerHTML = `<span class="word">${idx + 1}. ${
+        ans.uz
+      }</span> - <span class="userans">${ans.selected}</span>
+        ${
+          ans.selected !== ans.correct
+            ? '<span class="rightans">→ ' + ans.correct + "</span>"
+            : ""
+        }`;
+      reviewListDiv.appendChild(div);
+    }
+  });
+}
+retryBtn.onclick = function () {
+  startQuiz(UNITS.findIndex((u) => u === currentUnit));
+};
+chooseUnitBtn.onclick = renderUnitSelect;
+
+function generateOptions(correct, vocab) {
+  let variants = [correct];
+  let wrongs = vocab.map((v) => v.tr).filter((tr) => tr !== correct);
+  shuffle(wrongs);
+  for (let i = 0; i < 3 && i < wrongs.length; i++) variants.push(wrongs[i]);
+  return shuffle(variants);
+}
+function shuffle(arr) {
+  let a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
-// Bosh menyuga qaytish
-function showStartScreen() {
-  document.getElementById("result-screen").classList.remove("active");
-  document.getElementById("start-screen").classList.add("active");
-}
+renderUnitSelect();
