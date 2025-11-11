@@ -500,12 +500,32 @@ retryBtn.onclick = function () {
 };
 chooseUnitBtn.onclick = renderUnitSelect;
 
+// function generateOptions(correct, vocab) {
+//   let variants = [correct];
+//   let wrongs = vocab.map((v) => v.tr).filter((tr) => tr !== correct);
+//   shuffle(wrongs);
+//   for (let i = 0; i < 3 && i < wrongs.length; i++) variants.push(wrongs[i]);
+//   return shuffle(variants);
+// }
 function generateOptions(correct, vocab) {
-  let variants = [correct];
-  let wrongs = vocab.map((v) => v.tr).filter((tr) => tr !== correct);
-  shuffle(wrongs);
-  for (let i = 0; i < 3 && i < wrongs.length; i++) variants.push(wrongs[i]);
-  return shuffle(variants);
+  // To'g'ri javob
+  let options = [correct];
+  // Barcha noto'g'ri variantlar ro'yxati
+  let wrongs = vocab
+    .map(v => v.tr)
+    .filter(tr => tr !== correct);
+
+  // Noto'g'ri variantlarni har doim unique qilish va kamaytirish
+  let optionSet = new Set(); // unique variantlar uchun
+  while(optionSet.size < 3 && wrongs.length > 0) {
+    let idx = Math.floor(Math.random() * wrongs.length);
+    let val = wrongs[idx];
+    if(!optionSet.has(val)) optionSet.add(val);
+    wrongs.splice(idx, 1);
+  }
+  // final variantlar
+  options = options.concat(Array.from(optionSet));
+  return shuffle(options);
 }
 function shuffle(arr) {
   let a = arr.slice();
