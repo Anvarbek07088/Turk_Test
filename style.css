@@ -326,7 +326,7 @@ main section {
   #app {
     max-width: 98vw;
     margin: 0 0 12px 0;
-    padding: 0;
+    padding: 20px 10px;
     border-radius: 0;
     box-shadow: none;
   }

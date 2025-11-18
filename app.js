@@ -990,11 +990,11 @@ function showResult() {
   } else if (percent >= 30) {
     emoji = "💡";
     motivator =
-      "Hali o‘rganish uchun imkoniyat ko‘p! Qaerda xato bo‘lsangiz, yana yodlang.";
+      "Hali o‘rganish uchun imkoniyat ko‘p! Qaerda xato bo‘lsa, yana yodlang.";
   } else {
     emoji = "🚀";
     motivator =
-      "Boshlovchi natija. Tag‘in harakat qilib, bilimni mustahkamlang!";
+      "Boshlovchi natija. Harakatdan to'xtamang! Qayta ishlang.";
   }
 
   // Progress ring (SVG) natija foizi uchun
