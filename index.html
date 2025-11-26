@@ -2,59 +2,166 @@
 <html lang="uz">
   <head>
     <meta charset="UTF-8" />
-    <title>Turkcha Lug'at Testlari</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Turk tili lug'ati orqali o'zbek tilidan turk tiliga testlar."
-    />
+    <title>Türk Tili A1 - O'quv Platformasi</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
-    <div id="app">
+    <div class="container">
       <header>
-        <h1>Turkcha Lug'at Testlari</h1>
+        <h1>Türk Tili A1 Daraja</h1>
+        <p>O'zbek tilidan Türk tiliga o'rganish platformasi</p>
       </header>
-      <main>
-        <section id="unit-select"></section>
-        <section id="quiz-section" style="display: none">
-          <div id="progress"></div>
-          <div id="question"></div>
-          <div id="options"></div>
-          <div id="nav-buttons" style="margin-top: 10px">
-            <button id="prevBtn" style="display: none">← Orqaga</button>
-            <button id="nextBtn" style="display: none">Keyingi →</button>
-            <button
-              id="endBtn"
-              style="background: #fa4d4a; color: #fff; float: right"
-            >
-              Testni tugatish
-            </button>
+
+      <div class="main-content">
+        <!-- Unitlar ro'yxati -->
+        <section id="units-section" class="section active">
+          <h2>Ünitlar</h2>
+          <div class="units-grid">
+            <!-- Unitlar JavaScript orqali yuklanadi -->
           </div>
-          <div id="result"></div>
         </section>
-        <section id="finish-section" style="display: none">
-          <h2 id="finish-title">Test yakuni</h2>
-          <div id="final-score"></div>
-          <div id="review-list"></div>
-          <button id="retryBtn">Yana o‘ynash</button>
-          <button id="chooseUnitBtn">Boshqa Unitni tanlash</button>
+
+        <!-- Vazifalar bo'limi -->
+        <section id="tasks-section" class="section">
+          <div class="section-header">
+            <button id="back-to-units" class="btn btn-secondary">
+              ← Ünitlarga qaytish
+            </button>
+            <h2 id="current-unit-title">Unit 1 — Merhaba</h2>
+          </div>
+
+          <div class="tasks-container">
+            <div class="task-nav">
+              <button id="prev-task" class="btn btn-secondary" disabled>
+                ← Oldingi
+              </button>
+              <span id="task-counter">1/20</span>
+              <button id="next-task" class="btn btn-secondary">
+                Keyingi →
+              </button>
+            </div>
+
+            <div class="task-content">
+              <div class="task-question">
+                <h3 id="task-question-text">Savol matni...</h3>
+              </div>
+
+              <div class="task-options">
+                <!-- Variantlar JavaScript orqali yuklanadi -->
+              </div>
+
+              <div class="task-feedback">
+                <!-- Javob natijasi shu yerda ko'rsatiladi -->
+              </div>
+            </div>
+
+            <div class="task-actions">
+              <button id="check-answer" class="btn btn-primary">
+                Javobni tekshirish
+              </button>
+              <button id="finish-tasks" class="btn btn-accent">
+                Vazifalarni tugatish
+              </button>
+            </div>
+          </div>
         </section>
-      </main>
-      <footer>
-        <p>
-          <em>© 2024 Turkcha Lug'at Testlari — <a href="#">Anvarbek</a></em>
-        </p>
-      </footer>
+
+        <!-- Test bo'limi -->
+        <section id="test-section" class="section">
+          <div class="section-header">
+            <button id="back-to-units-from-test" class="btn btn-secondary">
+              ← Ünitlarga qaytish
+            </button>
+
+            <h2 id="current-unit-test-title">Unit 1 — Test</h2>
+          </div>
+
+          <div class="test-container">
+            <div class="test-nav">
+              <button id="prev-test" class="btn btn-secondary" disabled>
+                ← Oldingi
+              </button>
+              <span id="test-counter">1/10</span>
+              <button id="next-test" class="btn btn-secondary">
+                Keyingi →
+              </button>
+            </div>
+
+            <div class="test-content">
+              <div class="test-question">
+                <h3 id="test-question-text">O'zbekcha so'z...</h3>
+              </div>
+
+              <div class="test-options">
+                <!-- Variantlar JavaScript orqali yuklanadi -->
+              </div>
+
+              <div class="test-feedback">
+                <!-- Javob natijasi shu yerda ko'rsatiladi -->
+              </div>
+            </div>
+
+            <div class="test-actions">
+              <!-- Tekshirish tugmasi olib tashlandi -->
+              <button id="finish-test" class="btn btn-accent">
+                Testni tugatish
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Natijalar bo'limi -->
+        <section id="results-section" class="section">
+          <div class="results-container">
+            <div class="results-header">
+              <h2>Natijalar</h2>
+              <button id="back-to-units-from-results" class="btn btn-secondary">
+                Ünitlarga qaytish
+              </button>
+            </div>
+
+            <div class="results-content">
+              <div class="results-animation">
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+              </div>
+
+              <div class="results-stats">
+                <h3 id="results-title">Vazifalar natijalari</h3>
+                <div class="stat">
+                  <span class="stat-label">To'g'ri javoblar:</span>
+                  <span id="correct-answers" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Noto'g'ri javoblar:</span>
+                  <span id="wrong-answers" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Foiz:</span>
+                  <span id="percentage" class="stat-value">0%</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Baholash:</span>
+                  <span id="grade" class="stat-value">-</span>
+                </div>
+              </div>
+
+              <div class="results-details">
+                <h4>Batafsil natijalar:</h4>
+                <div id="results-list">
+                  <!-- Natijalar ro'yxati -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
+
     <script src="app.js"></script>
   </body>
 </html>

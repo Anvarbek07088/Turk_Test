@@ -1,4 +1,1372 @@
-const UNITS = [
+/* ========== DATA ========== */
+const units = [
+  { id: 1, name: "1 — Merhaba" },
+  { id: 2, name: "2 — Nerede?" },
+  { id: 3, name: "3 — Ne yapıyorsun?" },
+  { id: 4, name: "4 — Benim Dünyam" },
+  { id: 5, name: "5 — Zaman Zaman" },
+  { id: 6, name: "6 — Çevremiz" },
+];
+
+/* ---------- Unit 1: user-provided 20 tasks ---------- */
+const tasks = {
+  1: [
+    {
+      id: "1.1",
+      type: "choice",
+      question: "A: …… B: Hoş bulduk.",
+      options: ["Günaydın", "Hoş geldin", "Merhaba"],
+      answer: 1,
+    },
+    {
+      id: "1.2",
+      type: "choice",
+      question: "“Senin adın ne?” savoliga mos javobni tanlang.",
+      options: ["İyiyim.", "Benim adım Ali.", "Türküm."],
+      answer: 1,
+    },
+    {
+      id: "1.3",
+      type: "choice",
+      question: "“Bu ne?” → rasmda kitap. To‘g‘ri javobni tanlang.",
+      options: ["Bu kitap.", "Bu kapı.", "Bu masa."],
+      answer: 0,
+    },
+    {
+      id: "1.4",
+      type: "choice",
+      question: "“O kim?” – rasmda öqituvchi.",
+      options: ["O öğrenci.", "O öğretmen.", "O kadın."],
+      answer: 1,
+    },
+    {
+      id: "1.5",
+      type: "choice",
+      question: "To‘g‘ri ko‘plik shaklini tanlang. Kalem → ?",
+      options: ["Kalemlar", "Kalemler", "Kalemle"],
+      answer: 1,
+    },
+    {
+      id: "1.6",
+      type: "choice",
+      question: "Qaysi biri xayrlashuv?",
+      options: ["Merhaba", "Hoşça kal", "Günaydın"],
+      answer: 1,
+    },
+    {
+      id: "1.7",
+      type: "choice",
+      question: "“Nasılsın?” savoliga mos javobni tanlang.",
+      options: ["Teşekkür ederim, iyiyim.", "Almanyalıyım.", "Kitap."],
+      answer: 0,
+    },
+    {
+      id: "1.8",
+      type: "choice",
+      question: "“Nerelisin?” – eng to‘g‘ri javobni tanlang.",
+      options: ["Doktorum.", "İyiyim.", "Özbekistanlıyım."],
+      answer: 2,
+    },
+
+    {
+      id: "1.10",
+      type: "choice",
+      question: "Dialogni to‘ldiring. A: Memnun oldum. B: …",
+      options: ["Ben de memnun oldum.", "Hoş geldin.", "Rica ederim."],
+      answer: 0,
+    },
+    {
+      id: "1.11",
+      type: "choice",
+      question: "“Bu-Şu-O” dan mosini tanlang. Rasm uzoqda bino.",
+      options: ["Bu bina", "Şu bina", "O bina"],
+      answer: 2,
+    },
+    {
+      id: "1.12",
+      type: "choice",
+      question: "“Kim?” savoliga mos javob.",
+      options: ["Masa", "Ali", "Kitap"],
+      answer: 1,
+    },
+    {
+      id: "1.13",
+      type: "choice",
+      question: "“Ne?” savoliga mos javob.",
+      options: ["Öğretmen", "Ali", "Kalem"],
+      answer: 2,
+    },
+    {
+      id: "1.14",
+      type: "choice",
+      question: "“Teşekkür ederim.” uchun mos javob.",
+      options: ["Görüşürüz", "Rica ederim", "İyiyim"],
+      answer: 1,
+    },
+    {
+      id: "1.15",
+      type: "choice",
+      question: "To‘g‘ri savol shaklini tanlang (soru eki mI).",
+      options: [
+        "Sen öğrencisin mi?",
+        "Sen misin öğrenci?",
+        "Sen öğrenci misin?",
+      ],
+      answer: 2,
+    },
+    {
+      id: "1.16",
+      type: "choice",
+      question: "Qaysi biri “meslek”?",
+      options: ["Masa", "Doktor", "Ev"],
+      answer: 1,
+    },
+    {
+      id: "1.17",
+      type: "choice",
+      question: "To‘g‘ri iborani tanlang.",
+      options: ["Hoş bulduk", "Hoş geldinim", "Hoş geldinizsiz"],
+      answer: 0,
+    },
+    {
+      id: "1.18",
+      type: "choice",
+      question: "“Ben … Ali.” bo‘sh joyni to‘ldiring.",
+      options: ["adın", "iyiyim", "adım"],
+      answer: 2,
+    },
+    {
+      id: "1.19",
+      type: "choice",
+      question: "Qaysi biri “Tilak” ifodasi?",
+      options: ["İyi günler", "Kitap nerede?", "Masa var"],
+      answer: 0,
+    },
+
+    {
+      id: "img.1",
+      type: "choice",
+      question: "To‘ldiring: “Nasılsın?”",
+      options: ["Görüşürüz.", "İyiyim.", "Ankara’lıyım."],
+      answer: 1,
+    },
+
+    {
+      id: "img.2",
+      type: "choice",
+      question: "To‘ldiring: “Nerelisin?”",
+      options: ["Görüşürüz.", "Ankara’lıyım.", "İyiyim."],
+      answer: 1,
+    },
+
+    {
+      id: "img.3",
+      type: "choice",
+      question: "To‘g‘ri variantni tanlang. “Merhaba!”",
+      options: ["Hoşça kal.", "Merhaba!", "Görüşürüz."],
+      answer: 1,
+    },
+
+    {
+      id: "img.4",
+      type: "choice",
+      question: "“Masa” so‘zining ko‘plik shaklini tanlang.",
+      options: ["masalar", "masalarım", "masayı"],
+      answer: 0,
+    },
+
+    {
+      id: "img.5",
+      type: "choice",
+      question: "“Vazo” so‘zining ko‘plik shaklini tanlang.",
+      options: ["vazolar", "vazoyu", "vazon"],
+      answer: 0,
+    },
+
+    {
+      id: "img.6",
+      type: "choice",
+      question: "Qaysi gapda “de/da” noto‘g‘ri yozilgan?",
+      options: ["Burda değil.", "Bunlar masada.", "Saatler duvarda."],
+      answer: 0,
+    },
+
+    {
+      id: "img.7",
+      type: "choice",
+      question: "Mamlakatni to‘g‘ri yozilgan variantni tanlang.",
+      options: ["İtalay", "İtalya", "İtala"],
+      answer: 1,
+    },
+
+    {
+      id: "img.8",
+      type: "choice",
+      question: "Qaysi biri “Rusya”ning to‘g‘ri yozilishi?",
+      options: ["Rusya", "Rusiya", "Rusyya"],
+      answer: 0,
+    },
+
+    {
+      id: "img.9",
+      type: "choice",
+      question: "To‘g‘ri javobni tanlang (Doğum Günü).",
+      options: ["Mutlu yıllar!", "Afiyet olsun!", "Geçmiş olsun!"],
+      answer: 0,
+    },
+
+    {
+      id: "img.10",
+      type: "choice",
+      question: "“Hastane”da aytiladigan to‘g‘ri ibora qaysi?",
+      options: ["Geçmiş olsun!", "Tebrikler!", "Afiyet olsun!"],
+      answer: 0,
+    },
+  ],
+
+  2: [
+    {
+      id: "2.1",
+      type: "choice",
+      question: "“Burası neresi?” – rasm: maktab",
+      options: ["Oda", "Okul", "Bahçe"],
+      answer: 1,
+    },
+
+    {
+      id: "2.2",
+      type: "choice",
+      question: "To‘g‘ri gapni tanlang.",
+      options: [
+        "Masada kalem var.",
+        "Masada kitaplik yok.",
+        "Masada okul var.",
+      ],
+      answer: 0,
+    },
+
+    {
+      id: "2.3",
+      type: "choice",
+      question:
+        "“Var mı?” savoliga mos javobni tanlang. — Sınıfta öğretmen var mı?",
+      options: ["Evet, var.", "Hayır, masa.", "Öğrenci."],
+      answer: 0,
+    },
+
+    {
+      id: "2.4",
+      type: "choice",
+      question: "“Yok” bilan to‘g‘ri gapni tanlang.",
+      options: [
+        "Ofisten bilgisayar yok.",
+        "Ofiste bilgisayar yok.",
+        "Bilgisayarda ofis yok .",
+      ],
+      answer: 1,
+    },
+
+    {
+      id: "2.5",
+      type: "choice",
+      question: "“-DA” qo‘shimchasi bilan to‘g‘ri gapni tanlang.",
+      options: ["Kalem masata.", "Kalem masada.", "Kalem masade."],
+      answer: 1,
+    },
+
+    {
+      id: "2.6",
+      type: "choice",
+      question: "Qaysi savol to‘g‘ri?",
+      options: ["Kitap nerede?", "Kitap ne?", "Kitap kim?"],
+      answer: 0,
+    },
+
+    {
+      id: "2.7",
+      type: "choice",
+      question: "“Kimde?” savoliga mos javobni tanlang. — Kalem kimde?",
+      options: ["Kalemde Ahmet.", "Ahmet’te.", "Ahmet kalem."],
+      answer: 1,
+    },
+
+    {
+      id: "2.8",
+      type: "choice",
+      question: "Rasmda bahçe. Qaysi gap to‘g‘ri?",
+      options: [
+        "Bahçede ağaçlar var.",
+        "Bahçede öğretmen yok.",
+        "Ikkalasi ham to‘g‘ri.",
+      ],
+      answer: 2,
+    },
+
+    {
+      id: "2.9",
+      type: "choice",
+      question:
+        "“Kaçıncı?” uchun to‘g‘ri javobni tanlang. — Bugün ayın kaçıncı günü?",
+      options: ["Ay", "12.", "Saat"],
+      answer: 1,
+    },
+
+    {
+      id: "2.10",
+      type: "choice",
+      question: "To‘g‘ri joylashuvni tanlang.",
+      options: ["Lamba duvarda.", "Lamba tavanda.", "Lamba masada."],
+      answer: 1,
+    },
+
+    {
+      id: "2.11",
+      type: "choice",
+      question: "“Ofiste neler var?” savoliga mos javob.",
+      options: [
+        "Kalem Ahmet’te.",
+        "Ofiste masa ve bilgisayar var.",
+        "Oda büyük.",
+      ],
+      answer: 1,
+    },
+
+    {
+      id: "2.12",
+      type: "choice",
+      question: "Qaysi biri “yer” nomi?",
+      options: ["Öğrenci", "Kantin", "Pencere"],
+      answer: 1,
+    },
+
+    {
+      id: "2.13",
+      type: "choice",
+      question: "To‘g‘ri sifatli gapni tanlang.",
+      options: ["Büyük  var.", "Sınıf büyük.", "Büyük var sınıf."],
+      answer: 1,
+    },
+
+    {
+      id: "2.14",
+      type: "choice",
+      question: "“Oda”ga mos predmetni tanlang.",
+      options: ["Yatak", "Otobüs", "Garson"],
+      answer: 0,
+    },
+
+    {
+      id: "2.15",
+      type: "choice",
+      question: "“Okulda … var.” bo‘sh joyni to‘ldiring.",
+      options: ["otobüs", "sınıflar", "kuş"],
+      answer: 1,
+    },
+
+    {
+      id: "2.16",
+      type: "choice",
+      question: "To‘g‘ri inkor gapni tanlang.",
+      options: [
+        "Bahçede çocuklar var değil.",
+        "Bahçede çocuk yok.",
+        "Bahçede yok çocuk var.",
+      ],
+      answer: 1,
+    },
+
+    {
+      id: "2.17",
+      type: "choice",
+      question: "Qaysi joyda bo‘lish mumkin?",
+      options: ["Öğretmen ofiste.", "Öğretmen masada.", "Öğretmen kitap."],
+      answer: 0,
+    },
+
+    {
+      id: "2.18",
+      type: "choice",
+      question: "“Benim odam … katta.” bo‘sh joyni to‘ldiring.",
+      options: ["üçüncü", "masa", "büyük"],
+      answer: 0,
+    },
+
+    {
+      id: "2.19",
+      type: "choice",
+      question: "To‘g‘ri ta’rifni tanlang.",
+      options: [
+        "Kütüphane bir öğrenci.",
+        "Kütüphanede kitaplar var.",
+        "Kütüphane masada.",
+      ],
+      answer: 1,
+    },
+
+    {
+      id: "2.20",
+      type: "choice",
+      question: "“Resimde neler var?” (stol, stulm , kitop)",
+      options: ["Öğretmen var.", "Sandalye var.", "Otobüs var."],
+      answer: 1,
+    },
+    {
+      id: "img2.1",
+      type: "choice",
+      question: "Xatoni toping va to‘g‘risini tanlang. “Ben 24 yaşındası.”",
+      options: ["Ben 24 yaşındayım.", "Ben 24 yaşındasın.", "Ben yaş 24."],
+      answer: 0,
+    },
+
+    {
+      id: "img2.2",
+      type: "choice",
+      question: "Qaysi gap to‘g‘ri?",
+      options: [
+        "Sınıfta hiç öğrenci var.",
+        "Sınıfta hiç öğrenci yok.",
+        "Sınıf öğrenci hiç var.",
+      ],
+      answer: 1,
+    },
+
+    {
+      id: "img2.3",
+      type: "choice",
+      question: "To‘ldiring: “Bir yılda 365 gün ……“",
+      options: ["var", "yok", "değilsin"],
+      answer: 0,
+    },
+
+    {
+      id: "img2.4",
+      type: "choice",
+      question: "Savolga mos javobni tanlang. “Kaç yaşındasın?”",
+      options: ["Ankara’dayım.", "45 yaşındayım.", "Evet, iyiyim."],
+      answer: 1,
+    },
+
+    {
+      id: "img2.5",
+      type: "choice",
+      question: "“Hayır, yumurta değil.” – bu javobga mos savol:",
+      options: ["Bu ne?", "Bu yumurta mı?", "Bu nerede?"],
+      answer: 1,
+    },
+
+    {
+      id: "img2.6",
+      type: "choice",
+      question: "Qaysi savolga “Evet, bugün eve gidiyorum.” javobi mos?",
+      options: ["Eve gidiyor musun?", "Ne içiyorsun?", "Nerelisin?"],
+      answer: 0,
+    },
+
+    {
+      id: "img2.7",
+      type: "choice",
+      question: "“Sen genç misin?” savoliga mos javobni tanlang.",
+      options: ["Evet, restoran.", "Evet, gencim.", "Evet, evdeyim."],
+      answer: 1,
+    },
+
+    {
+      id: "img2.8",
+      type: "choice",
+      question: "“Kantinde çay kaç lira?” – eng to‘g‘ri javob.",
+      options: ["Çay içiyorum.", "5 lira.", "Kantin var."],
+      answer: 1,
+    },
+
+    {
+      id: "img2.9",
+      type: "choice",
+      question: "“Sen kaçıncı sınıftasın?” – mos javobni tanlang.",
+      options: ["10 yaşındayım.", "Sınıfta 15 öğrenci var.", "8. sınıftayım."],
+      answer: 2,
+    },
+
+    {
+      id: "img2.10",
+      type: "choice",
+      question: "“Aşağıdakini moslashtiring: eczane → ?”",
+      options: ["fırın", "postane", "ilaç"],
+      answer: 2,
+    },
+  ],
+  3: [
+    {
+      id: "3.1",
+      type: "choice",
+      question: "“Ben kitap ……”",
+      options: ["oku", "okuyorum", "okuyor"],
+      answer: 1,
+    },
+    {
+      id: "3.2",
+      type: "choice",
+      question: "To‘g‘ri savolni tanlang.",
+      options: ["Ne yapıyorsun?", "Ne yapıyorsun mu?", "Yapıyorsun ne?"],
+      answer: 0,
+    },
+    {
+      id: "3.3",
+      type: "choice",
+      question: "“O çalışıyor.” – Qaysi harakatga mos?",
+      options: [
+        "Yotgan odam",
+        "Kompyuterda ishlayotgan odam",
+        "Ovqat yeyotgan odam",
+      ],
+      answer: 1,
+    },
+    {
+      id: "3.4",
+      type: "choice",
+      question: "“Ben televizyon ……”",
+      options: ["izliyorum", "izliyor", "izleme"],
+      answer: 0,
+    },
+    {
+      id: "3.5",
+      type: "choice",
+      question: "Inkor shaklini tanlang: Ali gel…",
+      options: ["miyor", "miyorsun", "mıyorsun"],
+      answer: 0,
+    },
+    {
+      id: "3.6",
+      type: "choice",
+      question: "Qaysi vaqt zarfi şimdiki zamonga mos?",
+      options: ["dün", "yarın", "şimdi"],
+      answer: 2,
+    },
+    {
+      id: "3.7",
+      type: "choice",
+      question: "“Saat 8’de ne yapıyorsun?” – mos javobni tanlang.",
+      options: ["Kitap okuyorum.", "Yarın gidiyorum.", "Bugün uyudum."],
+      answer: 0,
+    },
+    {
+      id: "3.8",
+      type: "choice",
+      question: "Şimdiki zamondagi to‘g‘ri gapni tanlang.",
+      options: [
+        "Ben sabah kahvaltı yapıyorum.",
+        "Ben yarın kahvaltı yapıyorum.",
+        "Ben dün kahvaltı yapıyorum.",
+      ],
+      answer: 0,
+    },
+    {
+      id: "3.9",
+      type: "choice",
+      question: "Fe’lni tanlang.",
+      options: ["masa", "yazmak", "öğrenci"],
+      answer: 1,
+    },
+    {
+      id: "3.10",
+      type: "choice",
+      question: "“Onlar … futbol oynuyor.”",
+      options: ["mı", "musun", ""],
+      answer: 2,
+    },
+    {
+      id: "3.11",
+      type: "choice",
+      question: "“Dinlemiyorum.” bu qanday gap?",
+      options: ["Olumlu", "Olumsuz", "Soru"],
+      answer: 1,
+    },
+    {
+      id: "3.12",
+      type: "choice",
+      question: "“Sen ne yapıyorsun?” – mos javob.",
+      options: ["Film izliyorum.", "Film izledim.", "Film izleyeceğim."],
+      answer: 0,
+    },
+    {
+      id: "3.13",
+      type: "choice",
+      question: "Qaysi biri şimdiki zaman emas?",
+      options: ["Yürüyorum", "Konuşuyorum", "Konuştum"],
+      answer: 2,
+    },
+    {
+      id: "3.14",
+      type: "choice",
+      question: "“Müzik dinliyor musun?” — mos javobni tanlang.",
+      options: ["Evet, dinliyorum.", "Hayır, geliyorum.", "Evet, yazıyorum."],
+      answer: 0,
+    },
+    {
+      id: "3.15",
+      type: "choice",
+      question: "“Ben … yazıyorum.”",
+      options: ["kalem", "kitap", "mektup"],
+      answer: 2,
+    },
+    {
+      id: "3.16",
+      type: "choice",
+      question: "Qaysi rasm “uyumak” fe’liga mos?",
+      options: [
+        "O‘qiyotgan odam",
+        "Yotib uxlayotgan odam",
+        "Ovqatlanayotgan odam",
+      ],
+      answer: 1,
+    },
+    {
+      id: "3.17",
+      type: "choice",
+      question: "To‘g‘ri tartibni tanlang.",
+      options: [
+        "Yemek yapıyorum ben.",
+        "Ben yemek yapıyorum.",
+        "Yapıyorum yemek ben.",
+      ],
+      answer: 1,
+    },
+    {
+      id: "3.18",
+      type: "choice",
+      question: "“O spor …….” bo‘sh joyni to‘ldiring.",
+      options: ["yapıyor", "gidiyor", "geliyor"],
+      answer: 0,
+    },
+    {
+      id: "3.19",
+      type: "choice",
+      question: "Qaysi biri faoliyat (aktivite)?",
+      options: ["masa", "uyumak", "pencere"],
+      answer: 1,
+    },
+    {
+      id: "3.20",
+      type: "choice",
+      question: "To‘g‘ri savol shaklini tanlang.",
+      options: [
+        "Kitap okuyorsun mu?",
+        "Kitap mı okuyorsun?",
+        "Mu okuyorsun kitap?",
+      ],
+      answer: 1,
+    },
+  ],
+  4: [
+    {
+      id: "1",
+      type: "choice",
+      question: "“Bu kaç lira?” savoliga mos javobni tanlang.",
+      options: ["20 lira.", "Kitap var.", "Mavi."],
+      answer: 0,
+    },
+    {
+      id: "2",
+      type: "choice",
+      question: "“Ne kadar?” savoliga mos javobni tanlang.",
+      options: ["2 kilo.", "Mavi.", "Kitap."],
+      answer: 0,
+    },
+    {
+      id: "3",
+      type: "choice",
+      question: "“Bu elma … lira.” bo‘sh joyni to‘ldiring.",
+      options: ["kaç", "nerede", "kim"],
+      answer: 0,
+    },
+    {
+      id: "4",
+      type: "choice",
+      question: "“Markette … süt var.” bo‘sh joyni to‘ldiring.",
+      options: ["bir", "iki", "her ikisi to‘g‘ri"],
+      answer: 2,
+    },
+    {
+      id: "5",
+      type: "choice",
+      question: "“Buzdolabında … yoğurt var.”",
+      options: ["bir tane", "dün", "mavi"],
+      answer: 0,
+    },
+    {
+      id: "6",
+      type: "choice",
+      question: "To‘g‘ri sifat + ism juftligini tanlang.",
+      options: ["büyük süt", "taze ekmek", "sarı su"],
+      answer: 1,
+    },
+    {
+      id: "7",
+      type: "choice",
+      question: "Qaysi biri “renk”?",
+      options: ["fiyat", "kırmızı", "defter"],
+      answer: 1,
+    },
+    {
+      id: "8",
+      type: "choice",
+      question: "Qaysi biri “eşya”?",
+      options: ["defter", "koşmak", "yarın"],
+      answer: 0,
+    },
+    {
+      id: "9",
+      type: "choice",
+      question: "To‘g‘ri moslikni tanlang.",
+      options: ["Sarı – renk", "5 lira – eşya", "Kalem – miktar"],
+      answer: 0,
+    },
+    {
+      id: "10",
+      type: "choice",
+      question: "“Mavi kalem …” — rasmga qarab.",
+      options: ["var", "mi", "yok"],
+      answer: 0,
+    },
+    {
+      id: "11",
+      type: "choice",
+      question: "To‘g‘ri gapni tanlang.",
+      options: [
+        "Sepette elma var.",
+        "Sepette elma yok değil.",
+        "Sepet elma var.",
+      ],
+      answer: 0,
+    },
+    {
+      id: "12",
+      type: "choice",
+      question: "To‘g‘ri inkor gapni tanlang.",
+      options: [
+        "Çantada para yok.",
+        "Çantada para yok değil.",
+        "Çanta para yok.",
+      ],
+      answer: 0,
+    },
+    {
+      id: "13",
+      type: "choice",
+      question: "To‘g‘ri savol shakli.",
+      options: ["Bu kaç kilo?", "Bu kilo mu?", "Kilo kaç bu?"],
+      answer: 0,
+    },
+    {
+      id: "14",
+      type: "choice",
+      question: "Market listesinde ne yok?",
+      options: ["süt", "yumurta", "peynir"],
+      answer: 2,
+    },
+    {
+      id: "15",
+      type: "choice",
+      question: "“Sebzeler” bo‘limiga qaysi biri mos?",
+      options: ["domates", "defter", "kalem"],
+      answer: 0,
+    },
+    {
+      id: "16",
+      type: "choice",
+      question: "“Markette peynir var mı?” savoliga mos javob.",
+      options: ["Evet, var.", "Bugün değil.", "3 kilo."],
+      answer: 0,
+    },
+    {
+      id: "17",
+      type: "choice",
+      question: "“Poşette neler var?” — rasm: su, ekmek.",
+      options: ["Su ve ekmek var.", "Su yok.", "Sadece meyve var."],
+      answer: 0,
+    },
+    {
+      id: "18",
+      type: "choice",
+      question: "Qaysi mahsulot “meyve”?",
+      options: ["kalem", "elma", "su"],
+      answer: 1,
+    },
+    {
+      id: "19",
+      type: "choice",
+      question: "Isim tamlamasini tanlang.",
+      options: ["okul kapısı", "okul kapı", "kapı okul"],
+      answer: 0,
+    },
+    {
+      id: "20",
+      type: "choice",
+      question: "“Ben kitap ……”",
+      options: ["oku", "okuyorum", "okuyor"],
+      answer: 1,
+    },
+    {
+      id: "21",
+      type: "choice",
+      question: "“Sen … yapıyorsun?” savoliga mos javob.",
+      options: ["çalışıyor", "çalışıyorsun", "çalışıyorum"],
+      answer: 1,
+    },
+    {
+      id: "22",
+      type: "choice",
+      question: "“O … mi geliyor?” bo‘sh joyni to‘ldiring.",
+      options: ["gel", "geliyor", "gelmez"],
+      answer: 1,
+    },
+    {
+      id: "23",
+      type: "choice",
+      question: "Qaysi biri fe’l + “-mAk” istemi bilan tuzilgan?",
+      options: ["yazmak", "yazıyor", "yazar"],
+      answer: 0,
+    },
+    {
+      id: "24",
+      type: "choice",
+      question: "Qaysi gap to‘g‘ri?",
+      options: ["Kitap 10 lira.", "Kitap lira 10.", "Lira kitap 10."],
+      answer: 0,
+    },
+    {
+      id: "25",
+      type: "choice",
+      question: "Qaysi gap fe’l + zamon eki bilan tuzilgan?",
+      options: ["Ben gidiyorum", "Ben gitmek", "Git"],
+      answer: 0,
+    },
+    {
+      id: "26",
+      type: "choice",
+      question: "Qaysi biri o‘zlik (kendi) + iyelik eki bilan tuzilgan?",
+      options: ["kitabım", "kitap", "kitaplar"],
+      answer: 0,
+    },
+    {
+      id: "27",
+      type: "choice",
+      question: "“Ülke – milliyet – dil” bo‘yicha moslikni tanlang.",
+      options: [
+        "Türkiye – Türk – Türkçe",
+        "Almanya – Almanya – Almanca",
+        "Fransa – Fransız – Fransızca",
+      ],
+      answer: 0,
+    },
+    {
+      id: "28",
+      type: "choice",
+      question: "Qaysi biri millatni bildiradi?",
+      options: ["Türk", "Türkiye", "Türkçe"],
+      answer: 0,
+    },
+    {
+      id: "29",
+      type: "choice",
+      question: "Qaysi biri tilni bildiradi?",
+      options: ["Türk", "Türkçe", "Türkiye"],
+      answer: 1,
+    },
+    {
+      id: "30",
+      type: "choice",
+      question: "“Benim dilim …” bo‘sh joyni to‘ldiring.",
+      options: ["Türkçe", "Türkiye", "Türk"],
+      answer: 0,
+    },
+  ],
+
+  5: [
+    {
+      id: "5.1",
+      type: "choice",
+      question: "Her sabah saat 7’de … kalkıyorum.",
+      options: ["ben", "geç", "-"],
+      answer: 2,
+    },
+    {
+      id: "5.2",
+      type: "choice",
+      question: "To‘g‘ri gapni tanlang.",
+      options: [
+        "Ben pazartesi okul gidiyorum.",
+        "Ben pazartesi okula gidiyorum.",
+        "Ben pazartesi gidiyor okul.",
+      ],
+      answer: 1,
+    },
+    {
+      id: "5.3",
+      type: "choice",
+      question: "Qaysi biri “hobi”?",
+      options: ["kitap okumak", "masa", "öğretmen"],
+      answer: 0,
+    },
+    {
+      id: "5.4",
+      type: "choice",
+      question: "Bugün günlerden ne?",
+      options: ["Sabah", "Salı", "Şimdi"],
+      answer: 1,
+    },
+    {
+      id: "5.5",
+      type: "choice",
+      question: "To‘g‘ri savolni tanlang.",
+      options: ["Saat kaç?", "Kaç saat?", "Ne saat?"],
+      answer: 0,
+    },
+    {
+      id: "5.6",
+      type: "choice",
+      question: "Ben her akşam TV …",
+      options: ["izliyorum", "izlemek", "izliyor"],
+      answer: 0,
+    },
+    {
+      id: "5.7",
+      type: "choice",
+      question: "Qaysi biri olumsuz?",
+      options: ["Geliyorum", "Gelmiyorum", "Geldim"],
+      answer: 1,
+    },
+    {
+      id: "5.8",
+      type: "choice",
+      question: "Hafta sonu … sinemaya gidiyoruz.",
+      options: ["dün", "bazen", "asla"],
+      answer: 1,
+    },
+    {
+      id: "5.9",
+      type: "choice",
+      question: "To‘g‘ri moslikni tanlang.",
+      options: ["Cuma – gün", "Kitap – gün", "Sabah – hafta"],
+      answer: 0,
+    },
+    {
+      id: "5.10",
+      type: "choice",
+      question: "Ben spor yap…",
+      options: ["mıyım", "mıyorum", "yorum"],
+      answer: 2,
+    },
+    {
+      id: "5.11",
+      type: "choice",
+      question: "Qaysi biri kundalik ish?",
+      options: ["yüz yıkamak", "uçmak", "gezegen"],
+      answer: 0,
+    },
+    {
+      id: "5.12",
+      type: "choice",
+      question: "Saat 10’da ne yapıyorsun?",
+      options: ["Ders çalışıyorum.", "Dün geldim.", "Yarın gideceğim."],
+      answer: 0,
+    },
+    {
+      id: "5.13",
+      type: "choice",
+      question: "Qaysi biri zaman zarfı?",
+      options: ["hızlı", "bazen", "masa"],
+      answer: 1,
+    },
+    {
+      id: "5.14",
+      type: "choice",
+      question: "Ben sabah kahvaltı …",
+      options: ["yapıyorum", "yapıyor", "yaptım"],
+      answer: 0,
+    },
+    {
+      id: "5.15",
+      type: "choice",
+      question: "To‘g‘ri tartibni tanlang.",
+      options: [
+        "Akşam eve geliyorum.",
+        "Eve akşam geliyorum.",
+        "Geliyorum akşam eve.",
+      ],
+      answer: 0,
+    },
+    {
+      id: "5.16",
+      type: "choice",
+      question: "Çarşamba günü kurs ……",
+      options: ["var", "yok", "ikkalasi mumkin"],
+      answer: 2,
+    },
+    {
+      id: "5.17",
+      type: "choice",
+      question: "Qaysi biri sport turi?",
+      options: ["yüzmek", "fırın", "bardak"],
+      answer: 0,
+    },
+    {
+      id: "5.18",
+      type: "choice",
+      question: "Her gün 6’da uyanıyor musun?",
+      options: ["Evet, uyanıyorum.", "Dün uyanmadım.", "Sabah kahvaltı."],
+      answer: 0,
+    },
+    {
+      id: "5.19",
+      type: "choice",
+      question: "To‘g‘ri jumlani tanlang.",
+      options: [
+        "Ben müzik dinlemiyorum.",
+        "Ben müzik dinlemiyor.",
+        "Ben değil müzik dinliyorum.",
+      ],
+      answer: 0,
+    },
+    {
+      id: "5.20",
+      type: "choice",
+      question: "Boş zamanlarında ne yapıyorsun?",
+      options: ["Ders çalışıyorum.", "Bilgisayarım.", "Saat 5."],
+      answer: 0,
+    },
+    // Yangi 10 ta savol (vaqt ifodalari va -DAn beri, -DI ishlari)
+    {
+      id: "5.21",
+      type: "choice",
+      question: "Saat 3 … ders var.",
+      options: ["geç", "kala", "var"],
+      answer: 2,
+    },
+    {
+      id: "5.22",
+      type: "choice",
+      question: "Saat + (y)A dakika var iborasi to‘g‘ri?",
+      options: [
+        "Saat üçe on dakika var",
+        "Saat üç geç on dakika var",
+        "Saat üç kala on dakika var",
+      ],
+      answer: 0,
+    },
+    {
+      id: "5.23",
+      type: "choice",
+      question: "Saat + (y)I dakika geçiyor iborasi to‘g‘ri?",
+      options: [
+        "Saat üçten on geçiyor",
+        "Saat üçe on geçiyor",
+        "Saat üç kala on geçiyor",
+      ],
+      answer: 0,
+    },
+    {
+      id: "5.24",
+      type: "choice",
+      question: "Saat + (y)A dakika kala iborasi to‘g‘ri?",
+      options: [
+        "Saat üçe on kala",
+        "Saat üçten on kala",
+        "Saat üç geç on kala",
+      ],
+      answer: 0,
+    },
+    {
+      id: "5.25",
+      type: "choice",
+      question: "İsim + DAn …",
+      options: ["evden okula", "okul evden", "ev okul"],
+      answer: 0,
+    },
+    {
+      id: "5.26",
+      type: "choice",
+      question: "İsim + (y)A kadar …",
+      options: ["okula kadar bekledim", "okul bekledim", "okula gelmek"],
+      answer: 0,
+    },
+    {
+      id: "5.27",
+      type: "choice",
+      question: "mAdAn önce ishlatilgan jumla to‘g‘ri?",
+      options: [
+        "Yemekten önce dişlerimi fırçaladım",
+        "Yemekten sonra dişlerimi fırçaladım",
+        "Dişlerimi fırçaladım",
+      ],
+      answer: 0,
+    },
+    {
+      id: "5.28",
+      type: "choice",
+      question: "DIktAn sonra ishlatilgan jumla?",
+      options: [
+        "Ders bittikten sonra dışarı çıktım",
+        "Ders bitmeden dışarı çıktım",
+        "Ders bitti",
+      ],
+      answer: 0,
+    },
+    {
+      id: "5.29",
+      type: "choice",
+      question: "-DAn beri ishlatilgan jumla?",
+      options: [
+        "Sabah 7’den beri çalışıyorum",
+        "Sabah 7’de çalışıyorum",
+        "Çalışıyorum",
+      ],
+      answer: 0,
+    },
+    {
+      id: "5.30",
+      type: "choice",
+      question: "DI ishlatilgan fe’l bilan to‘g‘ri jumla?",
+      options: [
+        "Dün sinemaya gittim",
+        "Dün sinemaya gidiyorum",
+        "Dün sinemaya gidiyor",
+      ],
+      answer: 0,
+    },
+  ],
+
+  6: [
+    {
+      id: "6.1",
+      type: "choice",
+      question: "Hangi besin sağlıklıdır?",
+      options: ["hamburger", "sebze", "cips"],
+      answer: 1,
+    },
+    {
+      id: "6.2",
+      type: "choice",
+      question: "Her gün … içmelisin.",
+      options: ["su", "kola", "kek"],
+      answer: 0,
+    },
+    {
+      id: "6.3",
+      type: "choice",
+      question: "Sen spor yap…?",
+      options: ["malısın", "mısın", "mı"],
+      answer: 0,
+    },
+    {
+      id: "6.4",
+      type: "choice",
+      question: "Doğru cümleyi seçin.",
+      options: [
+        "Ben meyve yememeliyim.",
+        "Ben su içmeliyim.",
+        "Ben hiç yürümüyorum.",
+      ],
+      answer: 1,
+    },
+    {
+      id: "6.5",
+      type: "choice",
+      question: "“Sağlıksız” kelimesine uygun seçenek?",
+      options: ["sebze", "meyve", "pizza"],
+      answer: 2,
+    },
+    {
+      id: "6.6",
+      type: "choice",
+      question: "Ben her sabah yürüyüş …",
+      options: ["yapıyorum", "yaptım", "yapacak"],
+      answer: 0,
+    },
+    {
+      id: "6.7",
+      type: "choice",
+      question: "Hangi biri içecek?",
+      options: ["çay", "çorba", "elma"],
+      answer: 0,
+    },
+    {
+      id: "6.8",
+      type: "choice",
+      question: "Boşluğu doldurun: “Günde 2 litre su ….”",
+      options: ["koşuyorum", "içiyorum", "izliyorum"],
+      answer: 1,
+    },
+    {
+      id: "6.9",
+      type: "choice",
+      question: "Hangi biri sağlıklı alışkanlık?",
+      options: ["geç yatmak", "çok şeker yemek", "düzenli spor yapmak"],
+      answer: 2,
+    },
+    {
+      id: "6.10",
+      type: "choice",
+      question: "Sen daha az … yemelisin.",
+      options: ["sebze", "şeker", "meyve"],
+      answer: 1,
+    },
+    {
+      id: "6.11",
+      type: "choice",
+      question: "Doğru soru cümlesini seçin.",
+      options: [
+        "Ne kadar su içiyorsun?",
+        "Su içiyor musun kaç?",
+        "İçiyorsun su mu?",
+      ],
+      answer: 0,
+    },
+    {
+      id: "6.12",
+      type: "choice",
+      question: "Ben kahvaltıda … yiyorum.",
+      options: ["yumurta", "koşu", "araba"],
+      answer: 0,
+    },
+    {
+      id: "6.13",
+      type: "choice",
+      question: "Hangi biri sağlıklı değil?",
+      options: ["soda içmek", "sabah koşmak", "fast food yemek"],
+      answer: 2,
+    },
+    {
+      id: "6.14",
+      type: "choice",
+      question: "Öğle yemeğinde ne yiyorsun?",
+      options: ["Yarın yiyorum.", "Çorba içiyorum.", "Araba sürüyorum."],
+      answer: 1,
+    },
+    {
+      id: "6.15",
+      type: "choice",
+      question: "Daha çok … uyumalısın.",
+      options: ["erken", "ekmek", "hızlı"],
+      answer: 0,
+    },
+    {
+      id: "6.16",
+      type: "choice",
+      question: "Hangi sıfat doğru?",
+      options: ["sağlıklı yaşam", "yaşam sağlıksız", "yiyecek hızlı"],
+      answer: 0,
+    },
+    {
+      id: "6.17",
+      type: "choice",
+      question: "Doğru cümleyi seçin.",
+      options: [
+        "Ben meyve sevmiyorum.",
+        "Ben meyve sevme değil.",
+        "Ben değil meyve seviyorum.",
+      ],
+      answer: 0,
+    },
+    {
+      id: "6.18",
+      type: "choice",
+      question: "Kahve içiyor musun?",
+      options: ["Evet, içiyorum.", "Saat 4.", "Dün içtim."],
+      answer: 0,
+    },
+    {
+      id: "6.19",
+      type: "choice",
+      question: "Her gün 30 dakika … yapmalısın.",
+      options: ["spor", "kitap", "araba"],
+      answer: 0,
+    },
+    {
+      id: "6.20",
+      type: "choice",
+      question: "Hangi cevap öneri ifade eder?",
+      options: ["Çok yoruldum.", "Doktora gitmelisin.", "Ben iyiyim."],
+      answer: 1,
+    },
+    // Yeni 10 sorular: İsim tamlamaları ve karşılaştırmalar
+    {
+      id: "6.21",
+      type: "choice",
+      question: "Belirtimli isim tamlaması örneği hangisi?",
+      options: ["Ahmet’in kitabı", "kitaplarım", "Ev"],
+      answer: 0,
+    },
+    {
+      id: "6.22",
+      type: "choice",
+      question: "Belirtisiz isim tamlaması örneği?",
+      options: ["Ev kapısı", "Ahmet’in evi", "Kitaplarım"],
+      answer: 0,
+    },
+    {
+      id: "6.23",
+      type: "choice",
+      question: "Belirtme durumu (y)I örneği hangisi?",
+      options: ["Kitabı aldım", "Kitap aldım", "Kitaplar okundu"],
+      answer: 0,
+    },
+    {
+      id: "6.24",
+      type: "choice",
+      question: "Karşılaştırma (DAn daha) cümlesi hangisi?",
+      options: [
+        "Bu araba ondan daha hızlı",
+        "Bu araba hızlı",
+        "Bu araba hızlı mı",
+      ],
+      answer: 0,
+    },
+    {
+      id: "6.25",
+      type: "choice",
+      question: "Tamlayanın iyelik eki (-In) ile tamlanan (-I) örnek?",
+      options: ["Ayşe’nin çantası", "Çanta Ayşe", "Çantam"],
+      answer: 0,
+    },
+    {
+      id: "6.26",
+      type: "choice",
+      question: "Tamlayanı yalın halde, tamlanan 3. kişi iyelik eki (-I) ile?",
+      options: ["Ev kapısı", "Evin kapısı", "Kapı ev"],
+      answer: 0,
+    },
+    {
+      id: "6.27",
+      type: "choice",
+      question: "Belirli nesneye sorulacak soru hangisi?",
+      options: ["Kitabı okudun mu?", "Kitap okudun mu?", "Kitap mı okudun?"],
+      answer: 0,
+    },
+    {
+      id: "6.28",
+      type: "choice",
+      question: "Hangi cümle karşılaştırma içerir?",
+      options: ["Ali, Mehmet’ten daha uzun", "Ali uzun", "Mehmet kısa"],
+      answer: 0,
+    },
+    {
+      id: "6.29",
+      type: "choice",
+      question: "Belirtme durumunda nesneye hangi soru sorulur?",
+      options: ["Kimi? Neyi?", "Kim? Ne?", "Nereye? Ne zaman?"],
+      answer: 0,
+    },
+    {
+      id: "6.30",
+      type: "choice",
+      question: "Doğru karşılaştırma cümlesi?",
+      options: ["Bu elma ondan daha tatlı", "Bu elma tatlı", "Elma daha tatlı"],
+      answer: 0,
+    },
+  ],
+};
+
+const Vocob = [
   {
     name: "1-Ünit A1 — İSİMLER-ismlar",
     vocab: [
@@ -781,256 +2149,700 @@ const UNITS = [
   },
 ];
 
-const unitSelectDiv = document.getElementById("unit-select");
-const quizSection = document.getElementById("quiz-section");
-const questionDiv = document.getElementById("question");
-const optionsDiv = document.getElementById("options");
-const nextBtn = document.getElementById("nextBtn");
-const prevBtn = document.getElementById("prevBtn");
-const endBtn = document.getElementById("endBtn");
-const resultDiv = document.getElementById("result");
-const progressDiv = document.getElementById("progress");
-const finishSection = document.getElementById("finish-section");
-const finalScoreDiv = document.getElementById("final-score");
-const retryBtn = document.getElementById("retryBtn");
-const chooseUnitBtn = document.getElementById("chooseUnitBtn");
-const reviewListDiv = document.getElementById("review-list");
+// O'zgaruvchilar
+let currentUnitId = 1;
+let currentTaskIndex = 0;
+let currentTestIndex = 0;
+let userAnswers = [];
+let testAnswers = [];
+let currentSection = "units";
 
-let currentUnit, questions, order, currentQuestionIdx, score, answers;
+// DOM elementlari
+const unitsSection = document.getElementById("units-section");
+const tasksSection = document.getElementById("tasks-section");
+const testSection = document.getElementById("test-section");
+const resultsSection = document.getElementById("results-section");
+const unitsGrid = document.querySelector(".units-grid");
+const currentUnitTitle = document.getElementById("current-unit-title");
+const currentUnitTestTitle = document.getElementById("current-unit-test-title");
+const taskQuestionText = document.getElementById("task-question-text");
+const testQuestionText = document.getElementById("test-question-text");
+const taskOptions = document.querySelector(".task-options");
+const testOptions = document.querySelector(".test-options");
+const taskCounter = document.getElementById("task-counter");
+const testCounter = document.getElementById("test-counter");
+const taskFeedback = document.querySelector(".task-feedback");
+const testFeedback = document.querySelector(".test-feedback");
+const checkAnswerBtn = document.getElementById("check-answer");
+const prevTaskBtn = document.getElementById("prev-task");
+const nextTaskBtn = document.getElementById("next-task");
+const prevTestBtn = document.getElementById("prev-test");
+const nextTestBtn = document.getElementById("next-test");
+const finishTasksBtn = document.getElementById("finish-tasks");
+const finishTestBtn = document.getElementById("finish-test");
+const backToUnitsBtn = document.getElementById("back-to-units");
+const backToUnitsFromTestBtn = document.getElementById(
+  "back-to-units-from-test"
+);
+const backToUnitsFromResultsBtn = document.getElementById(
+  "back-to-units-from-results"
+);
+const correctAnswersEl = document.getElementById("correct-answers");
+const wrongAnswersEl = document.getElementById("wrong-answers");
+const percentageEl = document.getElementById("percentage");
+const gradeEl = document.getElementById("grade");
+const resultsList = document.getElementById("results-list");
+const resultsTitle = document.getElementById("results-title");
 
-function renderUnitSelect() {
-  unitSelectDiv.innerHTML = `<h2>Unit(bo'lim)ni tanlang:</h2>`;
-  UNITS.forEach((unit, idx) => {
-    const btn = document.createElement("button");
-    btn.textContent = `${unit.name} (${unit.vocab.length} savol)`;
-    btn.className = "unit-btn";
-    btn.onclick = () => startQuiz(idx);
-    unitSelectDiv.appendChild(btn);
+// Unitlarni yuklash
+function loadUnits() {
+  unitsGrid.innerHTML = "";
+
+  units.forEach((unit) => {
+    const unitCard = document.createElement("div");
+    unitCard.className = "unit-card";
+    unitCard.innerHTML = `
+            <h3>${unit.name}</h3>
+            <div class="unit-actions">
+                <button class="btn btn-primary start-tasks" data-unit="${unit.id}">Vazifalar</button>
+                <button class="btn btn-secondary start-test" data-unit="${unit.id}">Test</button>
+            </div>
+        `;
+    unitsGrid.appendChild(unitCard);
   });
-  quizSection.style.display = "none";
-  finishSection.style.display = "none";
-  unitSelectDiv.style.display = "flex";
+
+  // Unit tugmalariga hodisa qo'shish
+  document.querySelectorAll(".start-tasks").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const unitId = parseInt(this.getAttribute("data-unit"));
+      startTasks(unitId);
+    });
+  });
+
+  document.querySelectorAll(".start-test").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const unitId = parseInt(this.getAttribute("data-unit"));
+      startTest(unitId);
+    });
+  });
 }
 
-function startQuiz(unitIdx) {
-  currentUnit = UNITS[unitIdx];
-  questions = shuffle([...currentUnit.vocab]);
-  order = Array.from(Array(questions.length).keys());
-  currentQuestionIdx = 0;
-  score = 0;
-  answers = Array(questions.length).fill(null);
-  unitSelectDiv.style.display = "none";
-  quizSection.style.display = "block";
-  finishSection.style.display = "none";
-  showQuestion();
-  resultDiv.textContent = "";
+// Vazifalarni boshlash
+function startTasks(unitId) {
+  currentUnitId = unitId;
+  currentTaskIndex = 0;
+  userAnswers = [];
+
+  // Sarlavhani yangilash
+  currentUnitTitle.textContent = units.find((u) => u.id === unitId).name;
+
+  // Bo'limlarni almashtirish
+  showSection("tasks");
+
+  // Birinchi vazifani yuklash
+  loadTask(currentTaskIndex);
 }
 
-function showQuestion() {
-  quizSection.classList.add("quiz-anim");
-  setTimeout(() => quizSection.classList.remove("quiz-anim"), 540);
-  progressDiv.textContent = `Savol: ${currentQuestionIdx + 1} / ${
-    questions.length
-  }`;
-  resultDiv.textContent = "";
-  prevBtn.style.display = currentQuestionIdx > 0 ? "" : "none";
-  nextBtn.style.display = answers[currentQuestionIdx] !== null ? "" : "none";
-  endBtn.style.display = "";
-  const question = questions[currentQuestionIdx];
-  questionDiv.innerHTML = `<span>O'zbekcha: <b>${question.uz}</b></span>
-   <br><span style="font-size:0.97em;color:#666">Turkchasini tanlang:</span>`;
-  const options = generateOptions(question.tr, currentUnit.vocab);
-  optionsDiv.innerHTML = "";
-  options.forEach((opt) => {
-    const btn = document.createElement("button");
-    btn.textContent = opt;
-    btn.disabled = answers[currentQuestionIdx] !== null;
-    if (answers[currentQuestionIdx] !== null) {
-      let answer = answers[currentQuestionIdx];
-      if (opt === answer.selected)
-        btn.classList.add(
-          answer.selected === answer.correct ? "active" : "wrong"
-        );
-      if (opt === answer.correct) btn.classList.add("active");
+// Testni boshlash
+function startTest(unitId) {
+  currentUnitId = unitId;
+  currentTestIndex = 0;
+  testAnswers = [];
+
+  // Sarlavhani yangilash
+  currentUnitTestTitle.textContent = `${
+    units.find((u) => u.id === unitId).name
+  } - Test`;
+
+  // Bo'limlarni almashtirish
+  showSection("test");
+
+  // Birinchi testni yuklash
+  loadTest(currentTestIndex);
+}
+
+// Vazifani yuklash
+function loadTask(index) {
+  const unitTasks = tasks[currentUnitId];
+  if (!unitTasks || index >= unitTasks.length) return;
+
+  const task = unitTasks[index];
+
+  // Savolni yangilash
+  taskQuestionText.textContent = task.question;
+
+  // Variantlarni yangilash
+  taskOptions.innerHTML = "";
+  task.options.forEach((option, i) => {
+    const optionEl = document.createElement("div");
+    optionEl.className = "option";
+    optionEl.textContent = option;
+    optionEl.setAttribute("data-index", i);
+    optionEl.addEventListener("click", function () {
+      selectTaskOption(this);
+    });
+    taskOptions.appendChild(optionEl);
+  });
+
+  // Hisoblagichni yangilash
+  taskCounter.textContent = `${index + 1}/${unitTasks.length}`;
+
+  // Tugmalarni yangilash
+  prevTaskBtn.disabled = index === 0;
+  nextTaskBtn.disabled = index === unitTasks.length - 1;
+
+  // Feedbackni yashirish
+  taskFeedback.style.display = "none";
+
+  // Oldingi javobni ko'rsatish
+  const userAnswer = userAnswers[index];
+  if (userAnswer !== undefined) {
+    const options = taskOptions.querySelectorAll(".option");
+    if (typeof userAnswer === "object" && userAnswer.answer !== undefined) {
+      options[userAnswer.answer].classList.add("selected");
+    } else {
+      options[userAnswer].classList.add("selected");
     }
-    btn.onclick = () => answerQuestion(btn, opt, question.tr);
-    optionsDiv.appendChild(btn);
-  });
-  if (answers[currentQuestionIdx] !== null) {
-    let answer = answers[currentQuestionIdx];
-    resultDiv.innerHTML =
-      answer.selected === answer.correct
-        ? "Toʻgʻri!"
-        : `<span>Xato! <span style="color:#43d197;">To'g'ri javob: <b>${answer.correct}</b></span></span>`;
+
+    // Agar javob tekshirilgan bo'lsa
+    if (userAnswer.checked !== undefined && userAnswer.checked) {
+      showTaskFeedback(index, userAnswer.answer, userAnswer.correct);
+    }
   }
 }
 
-function answerQuestion(btn, selected, correct) {
-  Array.from(optionsDiv.children).forEach((optionBtn) => {
-    optionBtn.disabled = true;
-    if (optionBtn.textContent === correct) optionBtn.classList.add("active");
-    if (optionBtn.textContent === selected && selected !== correct)
-      optionBtn.classList.add("wrong");
+// Testni yuklash
+function loadTest(index) {
+  const unitVocab =
+    Vocob.find((v) => v.name.includes(currentUnitId))?.vocab || [];
+  if (index >= unitVocab.length) return;
+
+  const vocab = unitVocab[index];
+
+  // Savolni yangilash
+  testQuestionText.textContent = vocab.uz;
+
+  // Variantlarni yaratish
+  const options = [vocab.tr];
+
+  // Qolgan variantlarni to'ldirish
+  while (options.length < 4) {
+    const randomVocab = unitVocab[Math.floor(Math.random() * unitVocab.length)];
+    if (!options.includes(randomVocab.tr)) {
+      options.push(randomVocab.tr);
+    }
+  }
+
+  // Variantlarni aralashtirish
+  options.sort(() => Math.random() - 0.5);
+
+  // Variantlarni yangilash
+  testOptions.innerHTML = "";
+  options.forEach((option, i) => {
+    const optionEl = document.createElement("div");
+    optionEl.className = "option";
+    optionEl.textContent = option;
+    optionEl.setAttribute("data-index", i);
+    optionEl.addEventListener("click", function () {
+      selectTestOption(this);
+    });
+    testOptions.appendChild(optionEl);
   });
-  answers[currentQuestionIdx] = {
-    selected,
-    correct,
-    uz: questions[currentQuestionIdx].uz,
-    tr: questions[currentQuestionIdx].tr,
+
+  // Hisoblagichni yangilash
+  testCounter.textContent = `${index + 1}/${unitVocab.length}`;
+
+  // Tugmalarni yangilash
+  prevTestBtn.disabled = index === 0;
+  nextTestBtn.disabled = index === unitVocab.length - 1;
+
+  // Feedbackni yashirish
+  testFeedback.style.display = "none";
+
+  // Oldingi javobni ko'rsatish
+  const userAnswer = testAnswers[index];
+  if (userAnswer !== undefined) {
+    const options = testOptions.querySelectorAll(".option");
+    options[userAnswer.selectedIndex].classList.add("selected");
+
+    // Agar javob tekshirilgan bo'lsa
+    if (userAnswer.checked) {
+      showTestFeedback(index, userAnswer.selectedIndex, userAnswer.correct);
+    }
+  }
+}
+
+// Vazifa variantini tanlash
+function selectTaskOption(optionEl) {
+  // Barcha variantlardan tanlangan klassni olib tashlash
+  const options = taskOptions.querySelectorAll(".option");
+  options.forEach((opt) => opt.classList.remove("selected"));
+
+  // Tanlangan variantga klass qo'shish
+  optionEl.classList.add("selected");
+
+  // Javobni saqlash
+  userAnswers[currentTaskIndex] = parseInt(optionEl.getAttribute("data-index"));
+}
+
+// Test variantini tanlash
+function selectTestOption(optionEl) {
+  // Barcha variantlardan tanlangan klassni olib tashlash
+  const options = testOptions.querySelectorAll(".option");
+  options.forEach((opt) => opt.classList.remove("selected"));
+
+  // Tanlangan variantga klass qo'shish
+  optionEl.classList.add("selected");
+
+  // Javobni saqlash
+  const selectedIndex = parseInt(optionEl.getAttribute("data-index"));
+  const unitVocab =
+    Vocob.find((v) => v.name.includes(currentUnitId))?.vocab || [];
+  const correctAnswer = unitVocab[currentTestIndex].tr;
+  const selectedAnswer = optionEl.textContent;
+  const isCorrect = selectedAnswer === correctAnswer;
+
+  testAnswers[currentTestIndex] = {
+    selectedIndex: selectedIndex,
+    correct: isCorrect,
+    checked: true,
   };
-  nextBtn.style.display = "";
-  resultDiv.innerHTML =
-    selected === correct
-      ? "Toʻgʻri!"
-      : `<span>Xato! <span style="color:#43d197;">To'g'ri javob: <b>${correct}</b></span></span>`;
+
+  // Darhol javobni ko'rsatish
+  showTestFeedback(currentTestIndex, selectedIndex, isCorrect);
 }
 
-nextBtn.onclick = () => {
-  if (currentQuestionIdx < questions.length - 1) {
-    currentQuestionIdx++;
-    showQuestion();
-  } else {
-    showResult();
+// Vazifa javobini tekshirish
+function checkTaskAnswer() {
+  if (userAnswers[currentTaskIndex] === undefined) {
+    alert("Iltimos, javob variantini tanlang!");
+    return;
   }
-};
-prevBtn.onclick = () => {
-  if (currentQuestionIdx > 0) {
-    currentQuestionIdx--;
-    showQuestion();
-  }
-};
-endBtn.onclick = showResult;
 
-function showResult() {
-  quizSection.style.display = "none";
-  finishSection.style.display = "block";
-  score = answers.filter((a) => a && a.selected === a.correct).length;
-  finalScoreDiv.innerHTML = `<span>Natija:</span> <span style="font-size:1.27em;">${score} / ${
-    questions.length
-  }</span> <br>
-    <span>${Math.round((100 * score) / questions.length)}% to'g'ri</span>`;
-  reviewListDiv.innerHTML = "";
-  answers.forEach((ans, idx) => {
-    if (ans) {
-      const div = document.createElement("div");
-      div.className = `review ${
-        ans.selected === ans.correct ? "correct" : "wrong"
-      }`;
-      div.innerHTML = `<span class="word">${idx + 1}. ${
-        ans.uz
-      }</span> - <span class="userans">${ans.selected}</span>
-        ${
-          ans.selected !== ans.correct
-            ? '<span class="rightans">→ ' + ans.correct + "</span>"
-            : ""
-        }`;
-      reviewListDiv.appendChild(div);
+  const unitTasks = tasks[currentUnitId];
+  const task = unitTasks[currentTaskIndex];
+  const userAnswer = userAnswers[currentTaskIndex];
+  const isCorrect = userAnswer === task.answer;
+
+  // Javobni saqlash
+  userAnswers[currentTaskIndex] = {
+    answer: userAnswer,
+    correct: isCorrect,
+    checked: true,
+  };
+
+  // Feedbackni ko'rsatish
+  showTaskFeedback(currentTaskIndex, userAnswer, isCorrect);
+}
+
+// Vazifa feedbackini ko'rsatish
+function showTaskFeedback(index, userAnswer, isCorrect) {
+  const unitTasks = tasks[currentUnitId];
+  const task = unitTasks[index];
+
+  // Variantlarni rang bilan belgilash
+  const options = taskOptions.querySelectorAll(".option");
+  options.forEach((opt, i) => {
+    opt.classList.remove("correct", "wrong");
+    if (i === task.answer) {
+      opt.classList.add("correct");
+    } else if (i === userAnswer && !isCorrect) {
+      opt.classList.add("wrong");
     }
   });
-}
-retryBtn.onclick = function () {
-  startQuiz(UNITS.findIndex((u) => u === currentUnit));
-};
-chooseUnitBtn.onclick = renderUnitSelect;
 
-// function generateOptions(correct, vocab) {
-//   let variants = [correct];
-//   let wrongs = vocab.map((v) => v.tr).filter((tr) => tr !== correct);
-//   shuffle(wrongs);
-//   for (let i = 0; i < 3 && i < wrongs.length; i++) variants.push(wrongs[i]);
-//   return shuffle(variants);
-// }
-function generateOptions(correct, vocab) {
-  // To'g'ri javob
-  let options = [correct];
-  // Barcha noto'g'ri variantlar ro'yxati
-  let wrongs = vocab.map((v) => v.tr).filter((tr) => tr !== correct);
+  // Feedback matnini ko'rsatish
+  taskFeedback.textContent = isCorrect
+    ? "To'g'ri! Ajoyib javob!"
+    : `Noto'g'ri. To'g'ri javob: ${task.options[task.answer]}`;
 
-  // Noto'g'ri variantlarni har doim unique qilish va kamaytirish
-  let optionSet = new Set(); // unique variantlar uchun
-  while (optionSet.size < 3 && wrongs.length > 0) {
-    let idx = Math.floor(Math.random() * wrongs.length);
-    let val = wrongs[idx];
-    if (!optionSet.has(val)) optionSet.add(val);
-    wrongs.splice(idx, 1);
-  }
-  // final variantlar
-  options = options.concat(Array.from(optionSet));
-  return shuffle(options);
-}
-function shuffle(arr) {
-  let a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
+  taskFeedback.className = `task-feedback ${
+    isCorrect ? "feedback-correct" : "feedback-wrong"
+  }`;
+  taskFeedback.style.display = "block";
 }
 
-renderUnitSelect();
+// Test feedbackini ko'rsatish
+function showTestFeedback(index, userAnswerIndex, isCorrect) {
+  const unitVocab =
+    Vocob.find((v) => v.name.includes(currentUnitId))?.vocab || [];
+  const vocab = unitVocab[index];
 
-function showResult() {
-  quizSection.style.display = "none";
-  finishSection.style.display = "block";
-  score = answers.filter((a) => a && a.selected === a.correct).length;
-  let percent = Math.round((100 * score) / questions.length);
+  // Variantlarni rang bilan belgilash
+  const options = testOptions.querySelectorAll(".option");
+  const correctIndex = Array.from(options).findIndex(
+    (opt) => opt.textContent === vocab.tr
+  );
 
-  // Maxsus emoji va motivator uchun
-  let emoji = "⚡";
-  let motivator = "";
-  if (percent === 100) {
-    emoji = "🏆";
-    motivator = "Ajoyib! Barcha savollarga to‘g‘ri javob berdingiz!";
-  } else if (percent >= 87) {
-    emoji = "🥇";
-    motivator = "Zo‘r! Juda yaxshi ishladingiz!";
-  } else if (percent >= 60) {
-    emoji = "🌟";
-    motivator = "Yaxshi! Yana ko‘proq yodlaysangiz a’lo bo‘ladi.";
-  } else if (percent >= 30) {
-    emoji = "💡";
-    motivator =
-      "Hali o‘rganish uchun imkoniyat ko‘p! Qaerda xato bo‘lsa, yana yodlang.";
-  } else {
-    emoji = "🚀";
-    motivator =
-      "Boshlovchi natija. Harakatdan to'xtamang! Qayta ishlang.";
-  }
-
-  // Progress ring (SVG) natija foizi uchun
-  let ringVal = (percent * 282.743) / 100; // 2*PI*r, r=45. SVG circle stroke-dasharray
-  finalScoreDiv.innerHTML = `
-    <div class="result-badge">
-      <div class="emoji">${emoji}</div>
-      <svg class="result-ring" viewBox="0 0 112 112">
-        <circle class="progress-bg" cx="56" cy="56" r="45"></circle>
-        <circle class="progress" cx="56" cy="56" r="45" style="stroke-dasharray:${ringVal} 282.743"></circle>
-      </svg>
-      <div class="score">${score} / ${questions.length}</div>
-    </div>
-    <div id="final-score-text"><b>${percent}%</b> to'g'ri javoblar</div>
-    <div id="motivator">${motivator}</div>
-  `;
-
-  // Savollar ro‘yxati belgilar, ranglar & animatsiya bilan
-  reviewListDiv.innerHTML = "";
-  answers.forEach((ans, idx) => {
-    if (ans) {
-      let icon = ans.selected === ans.correct ? "✅" : "❌";
-      reviewListDiv.innerHTML += `
-        <div class="review ${
-          ans.selected === ans.correct ? "correct" : "wrong"
-        }">
-          <span class="review-icon">${icon}</span>
-          <span class="word">${idx + 1}. ${ans.uz}</span> 
-          <span class="userans">— ${ans.selected}</span>
-          ${
-            ans.selected !== ans.correct
-              ? '<span class="rightans">→ ' + ans.correct + "</span>"
-              : ""
-          }
-        </div>
-      `;
+  options.forEach((opt, i) => {
+    opt.classList.remove("correct", "wrong");
+    if (i === correctIndex) {
+      opt.classList.add("correct");
+    } else if (i === userAnswerIndex && !isCorrect) {
+      opt.classList.add("wrong");
     }
   });
+
+  // Feedback matnini ko'rsatish
+  testFeedback.textContent = isCorrect
+    ? "To'g'ri! Ajoyib javob!"
+    : `Noto'g'ri. To'g'ri javob: ${vocab.tr}`;
+
+  testFeedback.className = `test-feedback ${
+    isCorrect ? "feedback-correct" : "feedback-wrong"
+  }`;
+  testFeedback.style.display = "block";
 }
+
+// Vazifalarni tugatish
+function finishTasks() {
+  // Barcha javoblarni tekshirish
+  const unitTasks = tasks[currentUnitId];
+  let checkedCount = 0;
+
+  for (let i = 0; i < unitTasks.length; i++) {
+    if (
+      userAnswers[i] !== undefined &&
+      typeof userAnswers[i] === "object" &&
+      userAnswers[i].checked
+    ) {
+      checkedCount++;
+    } else {
+      // Tekshirilmagan javobni tekshirish
+      if (userAnswers[i] !== undefined) {
+        const userAnswer = userAnswers[i];
+        const isCorrect = userAnswer === unitTasks[i].answer;
+        userAnswers[i] = {
+          answer: userAnswer,
+          correct: isCorrect,
+          checked: true,
+        };
+        checkedCount++;
+      }
+    }
+  }
+
+  // Agar barcha javoblar tekshirilgan bo'lsa
+  if (checkedCount === unitTasks.length) {
+    showResults("tasks");
+  } else {
+    // Tekshirilmagan javoblar borligi haqida ogohlantirish
+    const confirmed = confirm(
+      `Siz ${
+        unitTasks.length - checkedCount
+      } ta savolga javob bermagansiz. Shunday bo'lsa ham natijalarni ko'rmoqchimisiz?`
+    );
+    if (confirmed) {
+      // Tekshirilmagan javoblarni noto'g'ri deb hisoblash
+      for (let i = 0; i < unitTasks.length; i++) {
+        if (userAnswers[i] === undefined) {
+          userAnswers[i] = {
+            answer: -1,
+            correct: false,
+            checked: false,
+          };
+        }
+      }
+      showResults("tasks");
+    }
+  }
+}
+
+// Testni tugatish
+function finishTest() {
+  const unitVocab =
+    Vocob.find((v) => v.name.includes(currentUnitId))?.vocab || [];
+  let answeredCount = 0;
+
+  // Javob berilgan savollar sonini hisoblash
+  for (let i = 0; i < unitVocab.length; i++) {
+    if (testAnswers[i] !== undefined) {
+      answeredCount++;
+    }
+  }
+
+  // Agar barcha savollarga javob berilgan bo'lsa
+  if (answeredCount === unitVocab.length) {
+    showResults("test");
+  } else {
+    // Javob berilmagan savollar borligi haqida ogohlantirish
+    const confirmed = confirm(
+      `Siz ${
+        unitVocab.length - answeredCount
+      } ta savolga javob bermagansiz. Shunday bo'lsa ham natijalarni ko'rmoqchimisiz?`
+    );
+    if (confirmed) {
+      // Javob berilmagan savollarni noto'g'ri deb hisoblash
+      for (let i = 0; i < unitVocab.length; i++) {
+        if (testAnswers[i] === undefined) {
+          testAnswers[i] = {
+            selectedIndex: -1,
+            correct: false,
+            checked: false,
+          };
+        }
+      }
+      showResults("test");
+    }
+  }
+}
+
+// Natijalarni ko'rsatish
+function showResults(type) {
+  let correctCount = 0;
+  let totalCount = 0;
+  let answeredCount = 0;
+  let results = [];
+
+  if (type === "tasks") {
+    resultsTitle.textContent = `${
+      units.find((u) => u.id === currentUnitId).name
+    } - Vazifalar natijalari`;
+    totalCount = tasks[currentUnitId].length;
+
+    for (let i = 0; i < totalCount; i++) {
+      const task = tasks[currentUnitId][i];
+      const userAnswer = userAnswers[i];
+
+      if (userAnswer !== undefined) {
+        answeredCount++;
+        const isCorrect = userAnswer.correct;
+
+        if (isCorrect) correctCount++;
+
+        results.push({
+          question: task.question,
+          userAnswer:
+            userAnswer.answer !== -1
+              ? task.options[userAnswer.answer]
+              : "Javob berilmagan",
+          correctAnswer: task.options[task.answer],
+          isCorrect: isCorrect,
+          answered: userAnswer.answer !== -1,
+        });
+      } else {
+        results.push({
+          question: task.question,
+          userAnswer: "Javob berilmagan",
+          correctAnswer: task.options[task.answer],
+          isCorrect: false,
+          answered: false,
+        });
+      }
+    }
+  } else {
+    resultsTitle.textContent = `${
+      units.find((u) => u.id === currentUnitId).name
+    } - Test natijalari`;
+    const unitVocab =
+      Vocob.find((v) => v.name.includes(currentUnitId))?.vocab || [];
+    totalCount = unitVocab.length;
+
+    for (let i = 0; i < totalCount; i++) {
+      const vocab = unitVocab[i];
+      const userAnswer = testAnswers[i];
+
+      if (userAnswer !== undefined) {
+        answeredCount++;
+        const isCorrect = userAnswer.correct;
+
+        if (isCorrect) correctCount++;
+
+        const options = testOptions.querySelectorAll(".option");
+        const selectedOption =
+          userAnswer.selectedIndex !== -1
+            ? options[userAnswer.selectedIndex]
+            : null;
+
+        results.push({
+          question: vocab.uz,
+          userAnswer: selectedOption
+            ? selectedOption.textContent
+            : "Javob berilmagan",
+          correctAnswer: vocab.tr,
+          isCorrect: isCorrect,
+          answered: userAnswer.selectedIndex !== -1,
+        });
+      } else {
+        results.push({
+          question: vocab.uz,
+          userAnswer: "Javob berilmagan",
+          correctAnswer: vocab.tr,
+          isCorrect: false,
+          answered: false,
+        });
+      }
+    }
+  }
+
+  // Statistikani hisoblash
+  const percentage =
+    answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+  let grade = "";
+
+  if (answeredCount === 0) {
+    grade = "Baholanmadi";
+  } else if (percentage >= 90) grade = "A'lo";
+  else if (percentage >= 80) grade = "Yaxshi";
+  else if (percentage >= 70) grade = "Qoniqarli";
+  else if (percentage >= 60) grade = "Qoniqarsiz";
+  else grade = "Yomon";
+
+  // Statistikani ko'rsatish
+  correctAnswersEl.textContent = correctCount;
+  wrongAnswersEl.textContent = answeredCount - correctCount;
+  percentageEl.textContent = answeredCount > 0 ? `${percentage}%` : "0%";
+  gradeEl.textContent = grade;
+
+  // Javob berilmagan savollar sonini ko'rsatish
+  const unansweredCount = totalCount - answeredCount;
+  if (unansweredCount > 0) {
+    const unansweredStat = document.createElement("div");
+    unansweredStat.className = "stat";
+    unansweredStat.innerHTML = `
+            <span class="stat-label">Javob berilmagan:</span>
+            <span class="stat-value" style="color: #e74c3c;">${unansweredCount}</span>
+        `;
+    document.querySelector(".results-stats").appendChild(unansweredStat);
+  }
+
+  // Natijalar ro'yxatini ko'rsatish
+  resultsList.innerHTML = "";
+  results.forEach((result, index) => {
+    const resultItem = document.createElement("div");
+    resultItem.className = `result-item ${
+      result.isCorrect ? "correct" : "wrong"
+    }`;
+
+    let statusIcon = "?";
+    let statusText = "";
+
+    if (!result.answered) {
+      statusIcon = "?";
+      statusText = "Javob berilmagan";
+    } else if (result.isCorrect) {
+      statusIcon = "✓";
+      statusText = "To'g'ri";
+    } else {
+      statusIcon = "✗";
+      statusText = "Noto'g'ri";
+    }
+
+    resultItem.innerHTML = `
+            <div class="result-question">
+                <strong>${index + 1}. ${result.question}</strong><br>
+                <span>Sizning javobingiz: ${result.userAnswer}</span>
+                ${
+                  !result.isCorrect && result.answered
+                    ? `<br><span>To'g'ri javob: ${result.correctAnswer}</span>`
+                    : ""
+                }
+                ${
+                  !result.answered
+                    ? `<br><span style="color: #e74c3c;">To'g'ri javob: ${result.correctAnswer}</span>`
+                    : ""
+                }
+            </div>
+            <div class="result-status ${
+              result.isCorrect ? "correct" : "wrong"
+            }">
+                ${statusIcon}<br>
+                <small>${statusText}</small>
+            </div>
+        `;
+    resultsList.appendChild(resultItem);
+  });
+
+  // Bo'limni ko'rsatish
+  showSection("results");
+}
+
+// Bo'limni ko'rsatish
+function showSection(section) {
+  // Barcha bo'limlarni yashirish
+  unitsSection.classList.remove("active");
+  tasksSection.classList.remove("active");
+  testSection.classList.remove("active");
+  resultsSection.classList.remove("active");
+
+  // Tanlangan bo'limni ko'rsatish
+  if (section === "units") {
+    unitsSection.classList.add("active");
+    currentSection = "units";
+  } else if (section === "tasks") {
+    tasksSection.classList.add("active");
+    currentSection = "tasks";
+  } else if (section === "test") {
+    testSection.classList.add("active");
+    currentSection = "test";
+  } else if (section === "results") {
+    resultsSection.classList.add("active");
+    currentSection = "results";
+
+    // Animatsiyani qayta ishga tushirish
+    const confettiElements = document.querySelectorAll(".confetti");
+    confettiElements.forEach((confetti) => {
+      confetti.style.animation = "none";
+      void confetti.offsetWidth; // Reflow trigger
+      confetti.style.animation = null;
+    });
+  }
+}
+
+// Dasturni ishga tushirish
+function init() {
+  // Unitlarni yuklash
+  loadUnits();
+
+  // Hodisa qo'shish
+  checkAnswerBtn.addEventListener("click", checkTaskAnswer);
+
+  prevTaskBtn.addEventListener("click", function () {
+    if (currentTaskIndex > 0) {
+      currentTaskIndex--;
+      loadTask(currentTaskIndex);
+    }
+  });
+
+  nextTaskBtn.addEventListener("click", function () {
+    const unitTasks = tasks[currentUnitId];
+    if (currentTaskIndex < unitTasks.length - 1) {
+      currentTaskIndex++;
+      loadTask(currentTaskIndex);
+    }
+  });
+
+  prevTestBtn.addEventListener("click", function () {
+    if (currentTestIndex > 0) {
+      currentTestIndex--;
+      loadTest(currentTestIndex);
+    }
+  });
+
+  nextTestBtn.addEventListener("click", function () {
+    const unitVocab =
+      Vocob.find((v) => v.name.includes(currentUnitId))?.vocab || [];
+    if (currentTestIndex < unitVocab.length - 1) {
+      currentTestIndex++;
+      loadTest(currentTestIndex);
+    }
+  });
+
+  finishTasksBtn.addEventListener("click", finishTasks);
+  finishTestBtn.addEventListener("click", finishTest);
+
+  backToUnitsBtn.addEventListener("click", function () {
+    showSection("units");
+  });
+
+  backToUnitsFromTestBtn.addEventListener("click", function () {
+    showSection("units");
+  });
+
+  backToUnitsFromResultsBtn.addEventListener("click", function () {
+    showSection("units");
+  });
+}
+
+// Dasturni ishga tushirish
+document.addEventListener("DOMContentLoaded", init);
